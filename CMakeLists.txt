@@ -149,7 +149,7 @@ if(MSVC)
 endif(MSVC)
 
 if(WIN32)
-	add_definitions(-D_USE_MATH_DEFINES)
+    add_definitions(-D_USE_MATH_DEFINES)
 endif(WIN32)
 
 # Record Compiler Info for record
@@ -282,6 +282,7 @@ include(GrBoost)
 ########################################################################
 # Enable python component
 ########################################################################
+set(Python_ADDITIONAL_VERSIONS 3.4 3.5 3.6)
 find_package(PythonLibs 2)
 find_package(SWIG)
 

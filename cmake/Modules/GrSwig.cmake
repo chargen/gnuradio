@@ -236,7 +236,7 @@ endmacro(GR_SWIG_INSTALL)
 ########################################################################
 file(WRITE ${CMAKE_BINARY_DIR}/get_swig_deps.py "
 
-import os, sys, re
+import os, sys, re, io
 
 i_include_matcher = re.compile('%(include|import)\\s*[<|\"](.*)[>|\"]')
 h_include_matcher = re.compile('#(include)\\s*[<|\"](.*)[>|\"]')
@@ -245,7 +245,7 @@ include_dirs = sys.argv[2].split(';')
 def get_swig_incs(file_path):
     if file_path.endswith('.i'): matcher = i_include_matcher
     else: matcher = h_include_matcher
-    file_contents = open(file_path, 'r').read()
+    file_contents = io.open(file_path, 'r', encoding='utf-8').read()
     return matcher.findall(file_contents, re.MULTILINE)
 
 def get_swig_deps(file_path, level):
