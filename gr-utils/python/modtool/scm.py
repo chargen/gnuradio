@@ -20,6 +20,8 @@
 #
 """ Class to handle source code management repositories. """
 
+from __future__ import print_function
+
 import subprocess
 
 try:
@@ -196,7 +198,7 @@ class SCMRepoFactory(object):
                 if issubclass(glbl, SCMRepository):
                     the_scm = glbl(self.path_to_repo)
                     if the_scm.is_active():
-                        print 'Found SCM of type:', the_scm.handles_scm_type
+                        print('Found SCM of type:', the_scm.handles_scm_type)
                         return the_scm
             except (TypeError, AttributeError, InvalidSCMError):
                 pass

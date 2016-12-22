@@ -22,17 +22,19 @@
 Utility to help plotting data from files.
 """
 
+from __future__ import print_function
+
 try:
     import scipy
 except ImportError:
-    print "Please install SciPy to run this script (http://www.scipy.org/)"
-    raise SystemExit, 1
+    print("Please install SciPy to run this script (http://www.scipy.org/)")
+    raise SystemExit(1)
 
 try:
     from pylab import *
 except ImportError:
-    print "Please install Matplotlib to run this script (http://matplotlib.sourceforge.net/)"
-    raise SystemExit, 1
+    print("Please install Matplotlib to run this script (http://matplotlib.sourceforge.net/)")
+    raise SystemExit(1)
 
 
 class plot_data:
@@ -86,7 +88,7 @@ class plot_data:
         try:
             f = scipy.fromfile(hfile, dtype=self.datatype, count=self.block_length)
         except MemoryError:
-            print "End of File"
+            print("End of File")
         else:
             self.f = scipy.array(f)
             self.time = scipy.array([i*(1/self.sample_rate) for i in range(len(self.f))])
@@ -162,6 +164,6 @@ class plot_data:
 
 def find(item_in, list_search):
     try:
-	return list_search.index(item_in) != None
+        return list_search.index(item_in) != None
     except ValueError:
-	return False
+        return False

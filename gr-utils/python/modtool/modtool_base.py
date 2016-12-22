@@ -20,6 +20,8 @@
 #
 """ Base class for the modules """
 
+from __future__ import print_function
+
 import os
 import re
 from argparse import ArgumentParser, RawDescriptionHelpFormatter
@@ -94,7 +96,7 @@ class ModTool(object):
             self._info['modname'] = get_modname()
         if self._info['modname'] is None:
             raise ModToolException('No GNU Radio module found in the given directory.')
-        print "GNU Radio module name identified: " + self._info['modname']
+        print("GNU Radio module name identified: " + self._info['modname'])
         if self._info['version'] == '36' and (
                 os.path.isdir(os.path.join('include', self._info['modname'])) or
                 os.path.isdir(os.path.join('include', 'gnuradio', self._info['modname']))
@@ -144,7 +146,7 @@ class ModTool(object):
         else:
             self.scm = SCMRepoFactory(self.options, '.').make_empty_scm_manager()
         if self.scm is None:
-            print "Error: Can't set up SCM."
+            print("Error: Can't set up SCM.")
             exit(1)
 
     def _check_directory(self, directory):
@@ -156,7 +158,7 @@ class ModTool(object):
             files = os.listdir(directory)
             os.chdir(directory)
         except OSError:
-            print "Can't read or chdir to directory %s." % directory
+            print("Can't read or chdir to directory %s." % directory)
             return False
         self._info['is_component'] = False
         for f in files:

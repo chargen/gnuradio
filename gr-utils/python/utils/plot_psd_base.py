@@ -20,18 +20,20 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
+
 try:
     import scipy
     from scipy import fftpack
 except ImportError:
-    print "Please install SciPy to run this script (http://www.scipy.org/)"
-    raise SystemExit, 1
+    print("Please install SciPy to run this script (http://www.scipy.org/)")
+    raise SystemExit(1)
 
 try:
     from pylab import *
 except ImportError:
-    print "Please install Matplotlib to run this script (http://matplotlib.sourceforge.net/)"
-    raise SystemExit, 1
+    print("Please install Matplotlib to run this script (http://matplotlib.sourceforge.net/)")
+    raise SystemExit(1)
 
 from argparse import ArgumentParser
 from scipy import log10
@@ -92,7 +94,7 @@ class plot_psd_base:
         try:
             self.iq = scipy.fromfile(self.hfile, dtype=self.datatype, count=self.block_length)
         except MemoryError:
-            print "End of File"
+            print("End of File")
             return False
         else:
             # retesting length here as newer version of scipy does not throw a MemoryError, just
@@ -105,7 +107,7 @@ class plot_psd_base:
                 self.iq_psd, self.freq = self.dopsd(self.iq)
                 return True
             else:
-                print "End of File"
+                print("End of File")
                 return False
 
     def dopsd(self, iq):
@@ -270,9 +272,9 @@ class plot_psd_base:
 
 def find(item_in, list_search):
     try:
-	return list_search.index(item_in) != None
+        return list_search.index(item_in) != None
     except ValueError:
-	return False
+        return False
 
 def main():
     parser = plot_psd_base.setup_options()
@@ -285,6 +287,3 @@ if __name__ == "__main__":
         main()
     except KeyboardInterrupt:
         pass
-
-
-

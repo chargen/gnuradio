@@ -1,4 +1,3 @@
-#
 # Copyright 2013 Free Software Foundation, Inc.
 #
 # This file is part of GNU Radio
@@ -19,6 +18,8 @@
 # Boston, MA 02110-1301, USA.
 #
 """ Returns information about a module """
+
+from __future__ import print_function
 
 import os
 
@@ -83,7 +84,7 @@ class ModToolInfo(ModTool):
             mod_info['build_dir'] = build_dir
             mod_info['incdirs'] += self._get_include_dirs(mod_info)
         if self._python_readable:
-            print str(mod_info)
+            print(str(mod_info))
         else:
             self._pretty_print(mod_info)
 
@@ -135,7 +136,7 @@ class ModToolInfo(ModTool):
             inc_dirs = [os.path.normpath(path) for path in self._suggested_dirs.split(':') if os.path.isdir(path)]
         return inc_dirs
 
-    def _pretty_print(self, mod_info):
+    def _pretty_print(elf, mod_info):
         """ Output the module info in human-readable format """
         index_names = {'base_dir': 'Base directory',
                        'modname':  'Module name',
@@ -144,10 +145,10 @@ class ModToolInfo(ModTool):
                        'incdirs': 'Include directories'}
         for key in mod_info.keys():
             if key == 'version':
-                print "        API version: %s" % {
+                print("        API version: %s" % {
                         '36': 'pre-3.7',
                         '37': 'post-3.7',
                         'autofoo': 'Autotools (pre-3.5)'
-                        }[mod_info['version']]
+                        }[mod_info['version']])
             else:
-                print '%19s: %s' % (index_names[key], mod_info[key])
+                print('%19s: %s' % (index_names[key], mod_info[key]))

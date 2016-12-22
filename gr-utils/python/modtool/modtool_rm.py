@@ -20,6 +20,8 @@
 #
 """ Remove blocks module """
 
+from __future__ import print_function
+
 import os
 import re
 import sys
@@ -132,12 +134,12 @@ class ModToolRemove(ModTool):
         for g in globs:
             files = files + glob.glob("%s/%s"% (path, g))
         files_filt = []
-        print "Searching for matching files in %s/:" % path
+        print("Searching for matching files in %s/:" % path)
         for f in files:
             if re.search(self._info['pattern'], os.path.basename(f)) is not None:
                 files_filt.append(f)
         if len(files_filt) == 0:
-            print "None found."
+            print("None found.")
             return []
         # 2. Delete files, Makefile entries and other occurrences
         files_deleted = []
@@ -154,10 +156,10 @@ class ModToolRemove(ModTool):
                 if ans == 'n':
                     continue
             files_deleted.append(b)
-            print "Deleting %s." % f
+            print("Deleting %s." % f)
             self.scm.remove_file(f)
             os.unlink(f)
-            print "Deleting occurrences of %s from %s/CMakeLists.txt..." % (b, path)
+            print("Deleting occurrences of %s from %s/CMakeLists.txt..." % (b, path))
             for var in makefile_vars:
                 ed.remove_value(var, b)
             if cmakeedit_func is not None:

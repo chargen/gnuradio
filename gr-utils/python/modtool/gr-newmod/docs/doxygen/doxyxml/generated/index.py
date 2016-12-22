@@ -8,7 +8,7 @@ from xml.dom import minidom
 
 import os
 import sys
-import compound
+from . import compound
 
 import indexsuper as supermod
 

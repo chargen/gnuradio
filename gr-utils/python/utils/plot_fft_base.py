@@ -20,18 +20,20 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
+
 try:
     import scipy
     from scipy import fftpack
 except ImportError:
-    print "Please install SciPy to run this script (http://www.scipy.org/)"
-    raise SystemExit, 1
+    print("Please install SciPy to run this script (http://www.scipy.org/)")
+    raise SystemExit(1)
 
 try:
     from pylab import *
 except ImportError:
-    print "Please install Python Matplotlib (http://matplotlib.sourceforge.net/) and Python TkInter https://wiki.python.org/moin/TkInter to run this script"
-    raise SystemExit, 1
+    print("Please install Python Matplotlib (http://matplotlib.sourceforge.net/) and Python TkInter https://wiki.python.org/moin/TkInter to run this script")
+    raise SystemExit(1)
 
 from argparse import ArgumentParser
 
@@ -84,7 +86,7 @@ class plot_fft_base:
         try:
             self.iq = scipy.fromfile(self.hfile, dtype=self.datatype, count=self.block_length)
         except MemoryError:
-            print "End of File"
+            print("End of File")
         else:
             self.iq_fft = self.dofft(self.iq)
 
@@ -228,9 +230,9 @@ class plot_fft_base:
 
 def find(item_in, list_search):
     try:
-	return list_search.index(item_in) != None
+        return list_search.index(item_in) != None
     except ValueError:
-	return False
+        return False
 
 def main():
     parser = plot_fft_base.setup_options()
@@ -243,6 +245,3 @@ if __name__ == "__main__":
         main()
     except KeyboardInterrupt:
         pass
-
-
-
