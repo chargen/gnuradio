@@ -20,6 +20,8 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
+
 
 import re
 import math
@@ -32,7 +34,7 @@ import numpy
 try:
     import scipy.linalg
 except ImportError:
-    print "Error: Program requires scipy (see: www.scipy.org)."
+    print("Error: Program requires scipy (see: www.scipy.org).")
     sys.exit(1)
 
 
@@ -49,7 +51,7 @@ def dec2base(num,base,l):
         s[l-i-1]=n%base
         n=int(n/base)
     if n!=0:
-        print 'Number ', num, ' requires more than ', l, 'digits.'
+        print('Number ', num, ' requires more than ', l, 'digits.')
     return s
 
 
@@ -128,40 +130,40 @@ def make_cpm_signals(K,P,M,L,q,frac):
        for m in range(L):
           qq1=qq1+xv[m]*q[m*Q:m*Q+Q]
        psi=2*math.pi*h*xv[-1]+4*math.pi*h*qq1+w
-       #print psi
+       #print(psi)
        PSI[x]=psi
     PSI = numpy.transpose(PSI)
     SS=numpy.exp(1j*PSI) # contains all signals as columns
-    #print SS
+    #print(SS)
 
 
     # Now we need to orthogonalize the signals
     F = scipy.linalg.orth(SS) # find an orthonormal basis for SS
-    #print numpy.dot(numpy.transpose(F.conjugate()),F) # check for orthonormality
+    #print(numpy.dot(numpy.transpose(F.conjugate()),F) # check for orthonormality)
     S = numpy.dot(numpy.transpose(F.conjugate()),SS)
-    #print F
-    #print S
+    #print(F)
+    #print(S)
 
     # We only want to keep those dimensions that contain most
     # of the energy of the overall constellation (eg, frac=0.9 ==> 90%)
     # evaluate mean energy in each dimension
     E=numpy.sum(numpy.absolute(S)**2,axis=1)/Q
     E=E/numpy.sum(E)
-    #print E
+    #print(E)
     Es = -numpy.sort(-E)
     Esi = numpy.argsort(-E)
-    #print Es
-    #print Esi
+    #print(Es)
+    #print(Esi)
     Ecum=numpy.cumsum(Es)
-    #print Ecum
+    #print(Ecum)
     v0=numpy.searchsorted(Ecum,frac)
     N = v0+1
-    #print v0
-    #print Esi[0:v0+1]
+    #print(v0)
+    #print(Esi[0:v0+1])
     Ff=numpy.transpose(numpy.transpose(F)[Esi[0:v0+1]])
-    #print Ff
+    #print(Ff)
     Sf = S[Esi[0:v0+1]]
-    #print Sf
+    #print(Sf)
 
 
     return (f0,SS,S,F,Sf,Ff,N)
