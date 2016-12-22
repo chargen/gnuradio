@@ -4,6 +4,8 @@
 # It's been patched to fix a problem with join, where a KeyboardInterrupt
 # caused a lock to be left in the acquired state.
 
+from __future__ import print_function
+
 import sys as _sys
 
 try:
@@ -127,8 +129,9 @@ class _RLock(_Verbose):
 
     # Internal methods used by condition variables
 
-    def _acquire_restore(self, (count, owner)):
+    def _acquire_restore(self, lock):
         self.__block.acquire()
+        count, owner = lock
         self.__count = count
         self.__owner = owner
         if __debug__:
@@ -313,7 +316,7 @@ class _BoundedSemaphore(_Semaphore):
 
     def release(self):
         if self._Semaphore__value >= self._initial_value:
-            raise ValueError, "Semaphore released too many times"
+            raise ValueError("Semaphore released too many times")
         return _Semaphore.release(self)
 
 
@@ -698,7 +701,7 @@ def _test():
         def run(self):
             while self.count > 0:
                 item = self.queue.get()
-                print item
+                print(item)
                 self.count = self.count - 1
 
     NP = 3

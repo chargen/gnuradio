@@ -20,6 +20,8 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
+
 from gnuradio import gr
 from gnuradio import blocks
 from gnuradio import filter
@@ -31,7 +33,7 @@ try:
     from PyQt4 import QtGui, QtCore
     import sip
 except ImportError:
-    print "Error: Program requires PyQt4 and gr-qtgui."
+    print("Error: Program requires PyQt4 and gr-qtgui.")
     sys.exit(1)
 
 class GrDataPlotParent(gr.top_block, QtGui.QWidget):
@@ -411,7 +413,7 @@ class GrDataPlotterValueTable:
     def __init__(self, uid, parent, x, y, xsize, ysize,
                  headers=['Statistic Key ( Source Block :: Stat Name )  ',
                           'Curent Value', 'Units', 'Description']):
-	# must encapsulate, cuz Qt's bases are not classes
+        # must encapsulate, cuz Qt's bases are not classes
         self.uid = uid
         self.treeWidget = QtGui.QTreeWidget(parent)
         self.treeWidget.setColumnCount(len(headers))

@@ -73,7 +73,7 @@ def count_bursts(data, tags, tsb_tag_key, vlen=1):
         if pos in lengths:
             if in_packet:
                 print("Got tag at pos {0} current packet_pos is {1}".format(pos, packet_pos))
-                raise StandardError("Received packet tag while in packet.")
+                raise Exception("Received packet tag while in packet.")
             packet_pos = -1
             packet_length = lengths[pos]
             in_packet = True

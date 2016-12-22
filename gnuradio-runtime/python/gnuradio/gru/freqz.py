@@ -132,7 +132,7 @@ class poly1d:
             c_or_r = poly(c_or_r)
         c_or_r = atleast_1d(c_or_r)
         if len(c_or_r.shape) > 1:
-            raise ValueError, "Polynomial must be 1d only."
+            raise ValueError("Polynomial must be 1d only.")
         c_or_r = trim_zeros(c_or_r, trim='f')
         if len(c_or_r) == 0:
             c_or_r = numpy.array([0])
@@ -227,7 +227,7 @@ class poly1d:
 
     def __pow__(self, val):
         if not isscalar(val) or int(val) != val or val < 0:
-            raise ValueError, "Power to non-negative integers only."
+            raise ValueError("Power to non-negative integers only.")
         res = [1]
         for k in range(val):
             res = polymul(self.coeffs, res)
@@ -256,7 +256,7 @@ class poly1d:
             return map(poly1d,polydiv(other.coeffs, self.coeffs))
 
     def __setattr__(self, key, val):
-        raise ValueError, "Attributes cannot be changed this way."
+        raise ValueError("Attributes cannot be changed this way.")
 
     def __getattr__(self, key):
         if key in ['r','roots']:
@@ -279,7 +279,7 @@ class poly1d:
     def __setitem__(self, key, val):
         ind = self.order - key
         if key < 0:
-            raise ValueError, "Does not support negative powers."
+            raise ValueError("Does not support negative powers.")
         if key > self.order:
             zr = numpy.zeros(key-self.order,self.coeffs.typecode())
             self.__dict__['coeffs'] = numpy.concatenate((zr,self.coeffs))

@@ -66,7 +66,7 @@ class msgq_runner(_threading.Thread):
             else:
                 try:
                     self._callback(msg)
-                except Exception, e:
+                except Exception as e:
                     if self._exit_on_error:
                         self._exit_error = e
                         self.stop()
