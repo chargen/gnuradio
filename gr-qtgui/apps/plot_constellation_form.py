@@ -20,6 +20,8 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
+
 import sys
 from gnuradio import filter
 
@@ -27,7 +29,7 @@ try:
     from PyQt4 import QtGui, QtCore
     import sip
 except ImportError:
-    print "Error: Program requires PyQt4."
+    print("Error: Program requires PyQt4.")
     sys.exit(1)
 
 try:
