@@ -19,6 +19,8 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
+
 import math
 from gnuradio import gr
 from gnuradio import filter
@@ -52,18 +54,18 @@ class nbfm_rx(gr.hier_block2):
           audio_filter
         """
 
-	gr.hier_block2.__init__(self, "nbfm_rx",
-				gr.io_signature(1, 1, gr.sizeof_gr_complex), # Input signature
-				gr.io_signature(1, 1, gr.sizeof_float))      # Output signature
+        gr.hier_block2.__init__(self, "nbfm_rx",
+                                gr.io_signature(1, 1, gr.sizeof_gr_complex), # Input signature
+                                gr.io_signature(1, 1, gr.sizeof_float))      # Output signature
 
         # FIXME audio_rate and quad_rate ought to be exact rationals
         self._audio_rate = audio_rate = int(audio_rate)
         self._quad_rate = quad_rate = int(quad_rate)
 
         if quad_rate % audio_rate != 0:
-            raise ValueError, "quad_rate is not an integer multiple of audio_rate"
+            raise ValueError("quad_rate is not an integer multiple of audio_rate")
 
-        squelch_threshold = 20		# dB
+        squelch_threshold = 20        # dB
         #self.squelch = analog.simple_squelch_cc(squelch_threshold, 0.001)
 
         # FM Demodulator  input: complex; output: float
@@ -81,7 +83,7 @@ class nbfm_rx(gr.hier_block2):
                                             0.5e3,          # Transition band
                                             filter.firdes.WIN_HAMMING)  # filter type
 
-        print "len(audio_taps) =", len(audio_taps)
+        print("len(audio_taps) =", len(audio_taps))
 
         # Decimating audio filter
         # input: float; output: float; taps: float

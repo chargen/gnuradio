@@ -40,9 +40,9 @@ class wfm_rcv(gr.hier_block2):
             quad_rate: input sample rate of complex baseband input. (float)
             audio_decimation: how much to decimate quad_rate to get to audio. (integer)
         """
-	gr.hier_block2.__init__(self, "wfm_rcv",
-				gr.io_signature(1, 1, gr.sizeof_gr_complex), # Input signature
-				gr.io_signature(1, 1, gr.sizeof_float))      # Output signature
+        gr.hier_block2.__init__(self, "wfm_rcv",
+                                gr.io_signature(1, 1, gr.sizeof_gr_complex), # Input signature
+                                gr.io_signature(1, 1, gr.sizeof_float))      # Output signature
 
         volume = 20.
 

@@ -26,9 +26,9 @@ from gnuradio import filter
 
 class standard_squelch(gr.hier_block2):
     def __init__(self, audio_rate):
-	gr.hier_block2.__init__(self, "standard_squelch",
-				gr.io_signature(1, 1, gr.sizeof_float), # Input signature
-				gr.io_signature(1, 1, gr.sizeof_float)) # Output signature
+        gr.hier_block2.__init__(self, "standard_squelch",
+                                gr.io_signature(1, 1, gr.sizeof_float), # Input signature
+                                gr.io_signature(1, 1, gr.sizeof_float)) # Output signature
 
         self.input_node = blocks.add_const_ff(0)          # FIXME kludge
 
@@ -48,7 +48,7 @@ class standard_squelch(gr.hier_block2):
         self.div = blocks.divide_ff()
         self.squelch_mult = blocks.multiply_ff()
 
-	self.connect(self, self.input_node)
+        self.connect(self, self.input_node)
         self.connect(self.input_node, (self.squelch_mult, 0))
 
         self.connect(self.input_node,self.low_iir)
@@ -66,7 +66,7 @@ class standard_squelch(gr.hier_block2):
         self.connect(self.sub, (self.div, 0))
         self.connect(self.add, (self.div, 1))
         self.connect(self.div, self.gate, self.squelch_lpf, (self.squelch_mult,1))
-	self.connect(self.squelch_mult, self)
+        self.connect(self.squelch_mult, self)
 
     def set_threshold(self, threshold):
         self.gate.set_hi(threshold)
