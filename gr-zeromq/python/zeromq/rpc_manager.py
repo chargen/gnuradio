@@ -19,6 +19,8 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
+
 import zmq
 import pmt
 import threading
@@ -39,22 +41,22 @@ class rpc_manager():
     def set_reply_socket(self, address):
         self.rep_socket = self.zmq_context.socket(zmq.REP)
         self.rep_socket.bind(address)
-        print "[RPC] reply socket bound to: ", address
+        print("[RPC] reply socket bound to: ", address)
         self.poller_rep.register(self.rep_socket, zmq.POLLIN)
 
     def set_request_socket(self, address):
         self.req_socket = self.zmq_context.socket(zmq.REQ)
         self.req_socket.connect(address)
-        print "[RPC] request socket connected to: ", address
+        print("[RPC] request socket connected to: ", address)
         self.poller_req_out.register(self.req_socket, zmq.POLLOUT)
         self.poller_req_in.register(self.req_socket, zmq.POLLIN)
 
     def add_interface(self, id_str, callback_func):
         if not self.interfaces.has_key(id_str):
             self.interfaces[id_str] = callback_func
-            print "[RPC] added reply interface:", id_str
+            print("[RPC] added reply interface:", id_str)
         else:
-            print "[RPC] ERROR: duplicate id_str:", id_str
+            print("[RPC] ERROR: duplicate id_str:", id_str)
 
     def watcher(self):
         self.keep_running = True
@@ -65,7 +67,7 @@ class rpc_manager():
                 # receive call
                 msg = self.rep_socket.recv()
                 (id_str, args) = pmt.to_python(pmt.deserialize_str(msg))
-                print "[RPC] request:", id_str, ", args:", args
+                print("[RPC] request:", id_str, ", args:", args)
                 reply = self.callback(id_str, args)
                 self.rep_socket.send(pmt.serialize_str(pmt.to_pmt(reply)))
 
@@ -85,7 +87,7 @@ class rpc_manager():
         socks = dict(self.poller_req_in.poll(10))
         if socks.get(self.req_socket) == zmq.POLLIN:
             reply = pmt.to_python(pmt.deserialize_str(self.req_socket.recv()))
-            print "[RPC] reply:", reply
+            print("[RPC] reply:", reply)
             return reply
 
     def callback(self, id_str, args):
@@ -97,5 +99,5 @@ class rpc_manager():
             else:
                 return(callback_func())
         else:
-            print "[RPC] ERROR: id_str not found:", id_str
+            print("[RPC] ERROR: id_str not found:", id_str)
             return None
