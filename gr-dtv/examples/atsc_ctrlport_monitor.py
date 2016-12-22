@@ -18,6 +18,8 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
+
 import sys
 import matplotlib
 matplotlib.use("QT4Agg")
@@ -42,7 +44,7 @@ class atsc_ctrlport_monitor:
         argv = [None, host, port]
         radiosys = GNURadioControlPortClient(argv=argv, rpcmethod='thrift')
         self.radio = radiosys.client
-        print self.radio
+        print(self.radio)
 
 
         vt_init_key = 'dtv_atsc_viterbi_decoder0::decoder_metrics'

@@ -53,17 +53,17 @@ class atsc_rx(gr.hier_block2):
         # Remove convolutional trellis coding
         vit = dtv.atsc_viterbi_decoder()
 
-	# Remove convolutional interleaving
-	dei = dtv.atsc_deinterleaver()
+        # Remove convolutional interleaving
+        dei = dtv.atsc_deinterleaver()
 
-	# Reed-Solomon decode
-	rsd = dtv.atsc_rs_decoder()
+        # Reed-Solomon decode
+        rsd = dtv.atsc_rs_decoder()
 
-	# Derandomize MPEG2-TS packet
-	der = dtv.atsc_derandomizer()
+        # Derandomize MPEG2-TS packet
+        der = dtv.atsc_derandomizer()
 
-	# Remove padding from packet
-	dep = dtv.atsc_depad()
+        # Remove padding from packet
+        dep = dtv.atsc_depad()
 
         # Connect pipeline
         self.connect(self, rx_filt, pll, dcr, agc, btl, fsc, equ)
