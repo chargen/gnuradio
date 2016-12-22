@@ -39,9 +39,9 @@ class cvsd_encode_fb(gr.hier_block2):
         from 1 to 8. A rate of 8k with a resampling rate of 8 provides a good quality signal.
         '''
 
-	gr.hier_block2.__init__(self, "cvsd_encode",
-				gr.io_signature(1, 1, gr.sizeof_float), # Input signature
-				gr.io_signature(1, 1, gr.sizeof_char))  # Output signature
+        gr.hier_block2.__init__(self, "cvsd_encode",
+                                gr.io_signature(1, 1, gr.sizeof_float), # Input signature
+                                gr.io_signature(1, 1, gr.sizeof_char))  # Output signature
 
         scale_factor = 32000.0
         self.interp = resample
@@ -70,9 +70,9 @@ class cvsd_decode_bf(gr.hier_block2):
         When using the CVSD vocoder, appropriate sampling rates are from 8k to 64k with resampling rates
         from 1 to 8. A rate of 8k with a resampling rate of 8 provides a good quality signal.
         '''
-	gr.hier_block2.__init__(self, "cvsd_decode",
-				gr.io_signature(1, 1, gr.sizeof_char),  # Input signature
-				gr.io_signature(1, 1, gr.sizeof_float)) # Output signature
+        gr.hier_block2.__init__(self, "cvsd_decode",
+                                gr.io_signature(1, 1, gr.sizeof_char),  # Input signature
+                                gr.io_signature(1, 1, gr.sizeof_float)) # Output signature
 
         scale_factor = 32000.0
         self.decim = resample
