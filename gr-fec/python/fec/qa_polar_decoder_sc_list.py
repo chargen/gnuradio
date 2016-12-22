@@ -20,6 +20,8 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
+
 from gnuradio import gr, gr_unittest, blocks
 import fec_swig as fec
 import numpy as np
@@ -56,7 +58,7 @@ class test_polar_decoder_sc_list(gr_unittest.TestCase):
         self.assertFalse(polar_decoder.set_frame_size(10))
 
     def test_002_one_vector(self):
-        print "test_002_one_vector"
+        print("test_002_one_vector")
         expo = 6
         block_size = 2 ** expo
         num_info_bits = 2 ** (expo - 1)
@@ -89,7 +91,7 @@ class test_polar_decoder_sc_list(gr_unittest.TestCase):
         self.assertTupleEqual(tuple(res), tuple(bits))
 
     def test_003_stream(self):
-        print "test_003_stream"
+        print("test_003_stream")
         nframes = 5
         expo = 8
         block_size = 2 ** expo

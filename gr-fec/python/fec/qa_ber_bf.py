@@ -20,6 +20,8 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
+
 from gnuradio import gr, gr_unittest, blocks
 import fec_swig as fec
 import numpy
@@ -132,8 +134,8 @@ class test_ber_bf(gr_unittest.TestCase):
         data = dst.data()
         expected_result = [-2.0, ]
 
-        print data
-        print expected_result
+        print(data)
+        print(expected_result)
 
         self.assertFloatTuplesAlmostEqual(expected_result, data, 5)
 

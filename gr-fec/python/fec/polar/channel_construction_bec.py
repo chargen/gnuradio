@@ -18,6 +18,8 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
+
 import numpy as np
 import helper_functions as hf
 
@@ -220,7 +222,7 @@ def plot_capacity_histogram(design_snr, save_file=None):
 
 
 def main():
-    print 'channel construction main'
+    print('channel construction main')
     n = 11
     block_size = int(2 ** n)
     design_snr = -1.59

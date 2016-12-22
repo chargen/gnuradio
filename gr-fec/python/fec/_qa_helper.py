@@ -20,6 +20,8 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
+
 from gnuradio import blocks
 from gnuradio import gr
 import sys, numpy
@@ -85,6 +87,6 @@ if __name__ == '__main__':
             errs += 1
 
     if errs == 0:
-        print "Decoded properly"
+        print("Decoded properly")
     else:
-        print "Problem Decoding"
+        print("Problem Decoding")

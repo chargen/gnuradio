@@ -18,6 +18,8 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
+
 '''
 Based on 2 papers:
 [1] Ido Tal, Alexander Vardy: 'How To Construct Polar Codes', 2013
@@ -249,7 +251,7 @@ def normalize_q(q, tpm):
 
 
 def main():
-    print 'channel construction AWGN main'
+    print('channel construction AWGN main')
     n = 8
     m = 2 ** n
     design_snr = 0.0

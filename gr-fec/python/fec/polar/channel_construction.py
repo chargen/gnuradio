@@ -18,6 +18,8 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
+
 '''
 [0] Erdal Arikan: 'Channel Polarization: A Method for Constructing Capacity-Achieving Codes for Symmetric Binary-Input Memoryless Channels', 2009
 foundational paper for polar codes.
@@ -117,7 +119,7 @@ def load_z_parameters(block_size, design_snr, mu):
 
 def main():
     np.set_printoptions(precision=3, linewidth=150)
-    print 'channel construction Bhattacharyya bounds by Arikan'
+    print('channel construction Bhattacharyya bounds by Arikan')
     n = 10
     m = 2 ** n
     k = m // 2

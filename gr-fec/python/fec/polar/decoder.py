@@ -18,6 +18,8 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
+
 import numpy as np
 from common import PolarCommon
 
@@ -239,31 +241,31 @@ def test_reverse_enc_dec():
     encoder = PolarEncoder(n, k, frozenbitposition, frozenbits)
     decoder = PolarDecoder(n, k, frozenbitposition, frozenbits)
     encoded = encoder.encode(bits)
-    print 'encoded:', encoded
+    print('encoded:', encoded)
     rx = decoder.decode(encoded)
-    print 'bits:', bits
-    print 'rx  :', rx
-    print (bits == rx).all()
+    print('bits:', bits)
+    print('rx  :', rx)
+    print((bits == rx).all())
 
 
 def compare_decoder_impls():
-    print '\nthis is decoder test'
+    print('\nthis is decoder test')
     n = 8
     k = 4
     frozenbits = np.zeros(n - k)
     # frozenbitposition16 = np.array((0, 1, 2, 3, 4, 5, 8, 9), dtype=int)
     frozenbitposition = np.array((0, 1, 2, 4), dtype=int)
     bits = np.random.randint(2, size=k)
-    print 'bits:', bits
+    print('bits:', bits)
     encoder = PolarEncoder(n, k, frozenbitposition, frozenbits)
     decoder = PolarDecoder(n, k, frozenbitposition, frozenbits)
     encoded = encoder.encode(bits)
-    print 'encoded:', encoded
+    print('encoded:', encoded)
     rx_st = decoder._lr_sc_decoder(encoded)
     rx_eff = decoder._lr_sc_decoder_efficient(encoded)
-    print 'standard :', rx_st
-    print 'efficient:', rx_eff
-    print (rx_st == rx_eff).all()
+    print('standard :', rx_st)
+    print('efficient:', rx_eff)
+    print((rx_st == rx_eff).all())
 
 
 def main():
@@ -279,14 +281,14 @@ def main():
     # decoder = PolarDecoder(n, k, frozenbitposition, frozenbits)
     #
     # bits = np.ones(k, dtype=int)
-    # print "bits: ", bits
+    # print("bits: ", bits)
     # evec = encoder.encode(bits)
-    # print "froz: ", encoder._insert_frozen_bits(bits)
-    # print "evec: ", evec
+    # print("froz: ", encoder._insert_frozen_bits(bits))
+    # print("evec: ", evec)
     #
     # evec[1] = 0
     # deced = decoder._lr_sc_decoder(evec)
-    # print 'SC decoded:', deced
+    # print('SC decoded:', deced)
     #
     # test_reverse_enc_dec()
     # compare_decoder_impls()

@@ -18,6 +18,8 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
+
 
 from encoder import PolarEncoder
 from decoder import PolarDecoder
@@ -58,7 +60,7 @@ def is_equal(first, second):
     if not (first == second).all():
         result = first == second
         for i in range(len(result)):
-            print '{0:4}: {1:2} == {2:1} = {3}'.format(i, first[i], second[i], result[i])
+            print('{0:4}: {1:2} == {2:1} = {3}'.format(i, first[i], second[i], result[i]))
         return False
     return True
 
@@ -112,7 +114,7 @@ def test_1024_rate_1_code():
         recv = decoder.decode(rx)
         channel_counter += (bits == recv)
 
-    print channel_counter
+    print(channel_counter)
     print(np.min(channel_counter), np.max(channel_counter))
 
     np.save('channel_counter_' + str(ntests) + '.npy', channel_counter)
@@ -330,7 +332,7 @@ def main():
     # frozenbits = np.zeros(n - k)
     # frozenbitposition8 = np.array((0, 1, 2, 4), dtype=int)
     # frozenbitposition = np.array((0, 1, 2, 3, 4, 5, 8, 9), dtype=int)
-    # print frozenbitposition
+    # print(frozenbitposition)
 
     # test_enc_dec_chain()
     # test_1024_rate_1_code()

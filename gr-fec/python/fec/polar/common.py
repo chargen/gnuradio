@@ -18,6 +18,8 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
+
 
 import numpy as np
 from helper_functions import *
@@ -81,4 +83,4 @@ class PolarCommon:
         return self._encode_efficient(vec)
 
     def info_print(self):
-        print "POLAR code ({0}, {1})".format(self.N, self.K)
+        print("POLAR code ({0}, {1})".format(self.N, self.K))
