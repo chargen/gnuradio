@@ -20,6 +20,8 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
+
 from gnuradio import gr
 from gnuradio import blocks
 import sys
@@ -27,7 +29,7 @@ import sys
 try:
     import scipy
 except ImportError:
-    print "Error: Program requires scipy (see: www.scipy.org)."
+    print("Error: Program requires scipy (see: www.scipy.org).")
     sys.exit(1)
 
 def main():
@@ -52,5 +54,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
