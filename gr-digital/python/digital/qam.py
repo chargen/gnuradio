@@ -100,7 +100,7 @@ def make_differential_constellation(m, gray_coded):
             return complex(-gc_to_x[gc_x], -gc_to_x[gc_y])
         if quad == 3:
             return complex(gc_to_x[gc_y], -gc_to_x[gc_x])
-        raise StandardError("Impossible!")
+        raise Exception("Impossible!")
 
     # First two bits determine quadrant.
     # Next (k-2)/2 bits determine x position.

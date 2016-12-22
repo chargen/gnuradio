@@ -1,24 +1,26 @@
 #!/usr/bin/env python
 #
 # Copyright 2013 Free Software Foundation, Inc.
-# 
+#
 # This file is part of GNU Radio
-# 
+#
 # GNU Radio is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 3, or (at your option)
 # any later version.
-# 
+#
 # GNU Radio is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with GNU Radio; see the file COPYING.  If not, write to
 # the Free Software Foundation, Inc., 51 Franklin Street,
 # Boston, MA 02110-1301, USA.
-# 
+#
+
+from __future__ import print_function
 
 import numpy, pylab, sys
 from gnuradio import digital
@@ -114,12 +116,12 @@ if __name__ == "__main__":
 
     k = numpy.log2(len(constel))
 
-    print "Sample: ", x
-    print "Python Generator Calculated: ", (y_python_gen_calc)
-    print "Python Generator Table:      ", (y_python_table)
-    print "Python Raw calc:             ", (y_python_raw_calc)
-    print "C++ Table calc:              ", (y_cpp_table)
-    print "C++ Raw calc:                ", (y_cpp_raw_calc)
+    print("Sample: ", x)
+    print("Python Generator Calculated: ", (y_python_gen_calc))
+    print("Python Generator Table:      ", (y_python_table))
+    print("Python Raw calc:             ", (y_python_raw_calc))
+    print("C++ Table calc:              ", (y_cpp_table))
+    print("C++ Raw calc:                ", (y_cpp_raw_calc))
 
     fig = pylab.figure(1)
     sp1 = fig.add_subplot(1,1,1)

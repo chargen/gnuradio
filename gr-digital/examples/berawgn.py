@@ -20,6 +20,8 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
+
 """
 BER simulation for QPSK signals, compare to theoretical values.
 Change the N_BITS value to simulate more bits per Eb/N0 value,
@@ -43,13 +45,13 @@ import sys
 try:
     from scipy.special import erfc
 except ImportError:
-    print "Error: could not import scipy (http://www.scipy.org/)"
+    print("Error: could not import scipy (http://www.scipy.org/)")
     sys.exit(1)
 
 try:
     import pylab
 except ImportError:
-    print "Error: could not import pylab (http://matplotlib.sourceforge.net/)"
+    print("Error: could not import pylab (http://matplotlib.sourceforge.net/)")
     sys.exit(1)
 
 # Best to choose powers of 10
@@ -112,7 +114,7 @@ class BERAWGNSimu(gr.top_block):
 
 def simulate_ber(EbN0):
     """ All the work's done here: create flow graph, run, read out BER """
-    print "Eb/N0 = %d dB" % EbN0
+    print("Eb/N0 = %d dB" % EbN0)
     fg = BERAWGNSimu(EbN0)
     fg.run()
     return numpy.sum(fg.sink.data())
@@ -122,7 +124,7 @@ if __name__ == "__main__":
     EbN0_max = 15
     EbN0_range = range(EbN0_min, EbN0_max+1)
     ber_theory = [berawgn(x)      for x in EbN0_range]
-    print "Simulating..."
+    print("Simulating...")
     ber_simu   = [simulate_ber(x) for x in EbN0_range]
 
     f = pylab.figure()

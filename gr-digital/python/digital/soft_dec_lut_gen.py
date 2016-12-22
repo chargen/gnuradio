@@ -20,6 +20,8 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
+
 import numpy
 
 def soft_dec_table_generator(soft_dec_gen, prec, Es=1):
@@ -252,4 +254,4 @@ def show_table(table):
                 pp += ") "
         pp += "\n"
         subj = 0
-    print pp
+    print(pp)

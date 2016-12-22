@@ -1,24 +1,26 @@
 #!/usr/bin/env python
 #
 # Copyright 2006-2008,2013 Free Software Foundation, Inc.
-# 
+#
 # This file is part of GNU Radio
-# 
+#
 # GNU Radio is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 3, or (at your option)
 # any later version.
-# 
+#
 # GNU Radio is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with GNU Radio; see the file COPYING.  If not, write to
 # the Free Software Foundation, Inc., 51 Franklin Street,
 # Boston, MA 02110-1301, USA.
-# 
+#
+
+from __future__ import print_function
 
 import math
 from gnuradio import gr, fft
@@ -37,12 +39,12 @@ class ofdm_mod(gr.hier_block2):
     """
     Modulates an OFDM stream. Based on the options fft_length, occupied_tones, and
     cp_length, this block creates OFDM symbols using a specified modulation option.
-    
+
     Send packets by calling send_pkt
     """
     def __init__(self, options, msgq_limit=2, pad_for_usrp=True):
         """
-	Hierarchical block for sending packets
+        Hierarchical block for sending packets
 
         Packets to be sent are enqueued by calling send_pkt.
         The output is the complex modulated signal at baseband.
@@ -53,9 +55,9 @@ class ofdm_mod(gr.hier_block2):
             pad_for_usrp: If true, packets are padded such that they end up a multiple of 128 samples
         """
 
-	gr.hier_block2.__init__(self, "ofdm_mod",
-				gr.io_signature(0, 0, 0),       # Input signature
-				gr.io_signature(1, 1, gr.sizeof_gr_complex)) # Output signature
+        gr.hier_block2.__init__(self, "ofdm_mod",
+                                gr.io_signature(0, 0, 0),       # Input signature
+                                gr.io_signature(1, 1, gr.sizeof_gr_complex)) # Output signature
 
         self._pad_for_usrp = pad_for_usrp
         self._modulation = options.modulation
@@ -74,22 +76,22 @@ class ofdm_mod(gr.hier_block2):
 
         # hard-coded known symbols
         preambles = (ksfreq,)
-                
+
         padded_preambles = list()
         for pre in preambles:
             padded = self._fft_length*[0,]
             padded[zeros_on_left : zeros_on_left + self._occupied_tones] = pre
             padded_preambles.append(padded)
-            
+
         symbol_length = options.fft_length + options.cp_length
-        
+
         mods = {"bpsk": 2, "qpsk": 4, "8psk": 8, "qam8": 8, "qam16": 16, "qam64": 64, "qam256": 256}
         arity = mods[self._modulation]
-        
+
         rot = 1
         if self._modulation == "qpsk":
             rot = (0.707+0.707j)
-            
+
         # FIXME: pass the constellation objects instead of just the points
         if(self._modulation.find("psk") >= 0):
             constel = psk.psk_constellation(arity)
@@ -97,23 +99,23 @@ class ofdm_mod(gr.hier_block2):
         elif(self._modulation.find("qam") >= 0):
             constel = qam.qam_constellation(arity)
             rotated_const = map(lambda pt: pt * rot, constel.points())
-        #print rotated_const
+        #print(rotated_const)
         self._pkt_input = digital.ofdm_mapper_bcv(rotated_const,
                                                   msgq_limit,
                                                   options.occupied_tones,
                                                   options.fft_length)
-        
+
         self.preambles = digital.ofdm_insert_preamble(self._fft_length,
                                                       padded_preambles)
         self.ifft = fft.fft_vcc(self._fft_length, False, win, True)
         self.cp_adder = digital.ofdm_cyclic_prefixer(self._fft_length,
                                                      symbol_length)
         self.scale = blocks.multiply_const_cc(1.0 / math.sqrt(self._fft_length))
-        
+
         self.connect((self._pkt_input, 0), (self.preambles, 0))
         self.connect((self._pkt_input, 1), (self.preambles, 1))
         self.connect(self.preambles, self.ifft, self.cp_adder, self.scale, self)
-        
+
         if options.verbose:
             self._print_verbage()
 
@@ -137,12 +139,12 @@ class ofdm_mod(gr.hier_block2):
         if eof:
             msg = gr.message(1) # tell self._pkt_input we're not sending any more packets
         else:
-            # print "original_payload =", string_to_hex_list(payload)
+            # print("original_payload =", string_to_hex_list(payload))
             pkt = ofdm_packet_utils.make_packet(payload, 1, 1,
                                                 self._pad_for_usrp,
                                                 whitening=True)
-            
-            #print "pkt =", string_to_hex_list(pkt)
+
+            #print("pkt =", string_to_hex_list(pkt))
             msg = gr.message_from_string(pkt)
         self._pkt_input.msgq().insert_tail(msg)
 
@@ -164,11 +166,11 @@ class ofdm_mod(gr.hier_block2):
         """
         Prints information about the OFDM modulator
         """
-        print "\nOFDM Modulator:"
-        print "Modulation Type: %s"    % (self._modulation)
-        print "FFT length:      %3d"   % (self._fft_length)
-        print "Occupied Tones:  %3d"   % (self._occupied_tones)
-        print "CP length:       %3d"   % (self._cp_length)
+        print("\nOFDM Modulator:")
+        print("Modulation Type: %s"    % (self._modulation))
+        print("FFT length:      %3d"   % (self._fft_length))
+        print("Occupied Tones:  %3d"   % (self._occupied_tones))
+        print("CP length:       %3d"   % (self._cp_length))
 
 
 class ofdm_demod(gr.hier_block2):
@@ -183,18 +185,18 @@ class ofdm_demod(gr.hier_block2):
 
     def __init__(self, options, callback=None):
         """
-	Hierarchical block for demodulating and deframing packets.
+        Hierarchical block for demodulating and deframing packets.
 
-	The input is the complex modulated signal at baseband.
+        The input is the complex modulated signal at baseband.
         Demodulated packets are sent to the handler.
 
         Args:
             options: pass modulation options from higher layers (fft length, occupied tones, etc.)
             callback: function of two args: ok, payload (ok: bool; payload: string)
-	"""
-	gr.hier_block2.__init__(self, "ofdm_demod",
-				gr.io_signature(1, 1, gr.sizeof_gr_complex), # Input signature
-				gr.io_signature(1, 1, gr.sizeof_gr_complex)) # Output signature
+        """
+        gr.hier_block2.__init__(self, "ofdm_demod",
+                                gr.io_signature(1, 1, gr.sizeof_gr_complex), # Input signature
+                                gr.io_signature(1, 1, gr.sizeof_gr_complex)) # Output signature
 
 
         self._rcvd_pktq = gr.msg_queue()          # holds packets from the PHY
@@ -224,7 +226,7 @@ class ofdm_demod(gr.hier_block2):
 
         mods = {"bpsk": 2, "qpsk": 4, "8psk": 8, "qam8": 8, "qam16": 16, "qam64": 64, "qam256": 256}
         arity = mods[self._modulation]
-        
+
         rot = 1
         if self._modulation == "qpsk":
             rot = (0.707+0.707j)
@@ -236,7 +238,7 @@ class ofdm_demod(gr.hier_block2):
         elif(self._modulation.find("qam") >= 0):
             constel = qam.qam_constellation(arity)
             rotated_const = map(lambda pt: pt * rot, constel.points())
-        #print rotated_const
+        #print(rotated_const)
 
         phgain = 0.25
         frgain = phgain*phgain / 4.0
@@ -263,7 +265,7 @@ class ofdm_demod(gr.hier_block2):
 
         if options.verbose:
             self._print_verbage()
-            
+
         self._watcher = _queue_watcher_thread(self._rcvd_pktq, callback)
 
     @staticmethod
@@ -286,11 +288,11 @@ class ofdm_demod(gr.hier_block2):
         """
         Prints information about the OFDM demodulator
         """
-        print "\nOFDM Demodulator:"
-        print "Modulation Type: %s"    % (self._modulation)
-        print "FFT length:      %3d"   % (self._fft_length)
-        print "Occupied Tones:  %3d"   % (self._occupied_tones)
-        print "CP length:       %3d"   % (self._cp_length)
+        print("\nOFDM Demodulator:")
+        print("Modulation Type: %s"    % (self._modulation))
+        print("FFT length:      %3d"   % (self._fft_length))
+        print("Occupied Tones:  %3d"   % (self._occupied_tones))
+        print("CP length:       %3d"   % (self._cp_length))
 
 
 

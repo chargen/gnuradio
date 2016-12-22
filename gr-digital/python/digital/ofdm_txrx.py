@@ -25,6 +25,8 @@ For simple configurations, no need to connect all the relevant OFDM blocks
 to form an OFDM Tx/Rx--simply use these.
 """
 
+from __future__ import print_function
+
 # Reminder: All frequency-domain stuff is in shifted form, i.e. DC carrier
 # in the middle!
 
@@ -112,7 +114,7 @@ def _get_constellation(bps):
     try:
         return constellation[bps]
     except KeyError:
-        print 'Modulation not supported.'
+        print('Modulation not supported.')
         exit(1)
 
 class ofdm_tx(gr.hier_block2):

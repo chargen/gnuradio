@@ -20,6 +20,8 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
+
 from gnuradio import gr, eng_notation
 from optparse import OptionParser
 from gnuradio.eng_option import eng_option
@@ -44,8 +46,8 @@ class status_thread(_threading.Thread):
 
     def run(self):
         while not self.done:
-            print "Freq. Offset: {0:5.0f} Hz  Timing Offset: {1:10.1f} ppm  Estimated SNR: {2:4.1f} dB  BER: {3:g}".format(
-                tb.frequency_offset(), tb.timing_offset()*1e6, tb.snr(), tb.ber())
+            print("Freq. Offset: {0:5.0f} Hz  Timing Offset: {1:10.1f} ppm  Estimated SNR: {2:4.1f} dB  BER: {3:g}".format(
+                tb.frequency_offset(), tb.timing_offset()*1e6, tb.snr(), tb.ber()))
             try:
                 time.sleep(1.0)
             except KeyboardInterrupt:
@@ -63,10 +65,10 @@ class bert_receiver(gr.hier_block2):
         gr.hier_block2.__init__(self, "bert_receive",
                                 gr.io_signature(1, 1, gr.sizeof_gr_complex), # Input signature
                                 gr.io_signature(0, 0, 0))                    # Output signature
-        
+
         self._bitrate = bitrate
 
-        self._demod = digital.generic_demod(constellation, differential, 
+        self._demod = digital.generic_demod(constellation, differential,
                                             samples_per_symbol,
                                             gray_coded, excess_bw,
                                             freq_bw, timing_bw, phase_bw,
@@ -79,13 +81,13 @@ class bert_receiver(gr.hier_block2):
         self._snr_probe = digital.probe_mpsk_snr_est_c(digital.SNR_EST_M2M4, 1000,
                                                        alpha=10.0/self._symbol_rate)
         self.connect(self._demod.time_recov, self._snr_probe)
-        
+
         # Descramble BERT sequence.  A channel error will create 3 incorrect bits
         self._descrambler = digital.descrambler_bb(0x8A, 0x7F, 7) # CCSDS 7-bit descrambler
 
         # Measure BER by the density of 0s in the stream
         self._ber = digital.probe_density_b(1.0/self._symbol_rate)
-        
+
         self.connect(self, self._demod, self._descrambler, self._ber)
 
     def frequency_offset(self):
@@ -105,15 +107,15 @@ class bert_receiver(gr.hier_block2):
 class rx_psk_block(gr.top_block):
     def __init__(self, demod, options):
 
-	gr.top_block.__init__(self, "rx_mpsk")
+        gr.top_block.__init__(self, "rx_mpsk")
 
         self._demodulator_class = demod
 
         # Get demod_kwargs
         demod_kwargs = self._demodulator_class.extract_kwargs_from_options(options)
-        
+
         # demodulator
-	self._demodulator = self._demodulator_class(**demod_kwargs)
+        self._demodulator = self._demodulator_class(**demod_kwargs)
 
         if(options.rx_freq is not None):
             symbol_rate = options.bitrate / self._demodulator.bits_per_symbol()
@@ -131,17 +133,17 @@ class rx_psk_block(gr.top_block):
 
         # Create the BERT receiver
         self._receiver = bert_receiver(options.bitrate,
-                                       self._demodulator._constellation, 
+                                       self._demodulator._constellation,
                                        options.samples_per_symbol,
-                                       options.differential, 
-                                       options.excess_bw, 
+                                       options.differential,
+                                       options.excess_bw,
                                        gray_coded=True,
                                        freq_bw=options.freq_bw,
                                        timing_bw=options.timing_bw,
                                        phase_bw=options.phase_bw,
                                        verbose=options.verbose,
                                        log=options.log)
-        
+
         self.connect(self._source, self._receiver)
 
     def snr(self):
@@ -149,7 +151,7 @@ class rx_psk_block(gr.top_block):
 
     def mag(self):
         return self._receiver.signal_mean()
-        
+
     def var(self):
         return self._receiver.noise_variance()
 
@@ -158,16 +160,16 @@ class rx_psk_block(gr.top_block):
 
     def frequency_offset(self):
         return self._receiver.frequency_offset()
-        
+
     def timing_offset(self):
         return self._receiver.timing_offset()
-            
+
 
 def get_options(demods):
     parser = OptionParser(option_class=eng_option, conflict_handler="resolve")
     parser.add_option("","--from-file", default=None,
                       help="input file of samples to demod")
-    parser.add_option("-m", "--modulation", type="choice", choices=demods.keys(), 
+    parser.add_option("-m", "--modulation", type="choice", choices=demods.keys(),
                       default='psk',
                       help="Select modulation from: %s [default=%%default]"
                             % (', '.join(demods.keys()),))
@@ -186,12 +188,12 @@ def get_options(demods):
     demods = digital.modulation_utils.type_1_demods()
     for mod in demods.values():
         mod.add_options(parser)
-		      
+
     (options, args) = parser.parse_args()
     if len(args) != 0:
         parser.print_help()
         sys.exit(1)
-	
+
     return (options, args)
 
 
@@ -203,8 +205,8 @@ if __name__ == "__main__":
     demod = demods[options.modulation]
     tb = rx_psk_block(demod, options)
 
-    print "\n*** SNR estimator is inaccurate below about 7dB"
-    print "*** BER estimator is inaccurate above about 10%\n"
+    print("\n*** SNR estimator is inaccurate below about 7dB")
+    print("*** BER estimator is inaccurate above about 10%\n")
     updater = status_thread(tb)
 
     try:

@@ -20,19 +20,21 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
+
 import sys
 
 try:
     import scipy
     from scipy import stats
 except ImportError:
-    print "Error: Program requires scipy (www.scipy.org)."
+    print("Error: Program requires scipy (www.scipy.org).")
     sys.exit(1)
 
 try:
     import pylab
 except ImportError:
-    print "Error: Program requires Matplotlib (matplotlib.sourceforge.net)."
+    print("Error: Program requires Matplotlib (matplotlib.sourceforge.net).")
     sys.exit(1)
 
 from gnuradio import gr, digital, filter
@@ -158,7 +160,7 @@ def main():
         SNR = 10.0**(snr/10.0)
         scale = scipy.sqrt(2*SNR)
         yy = bits + n_cpx/scale
-        print "SNR: ", snr
+        print("SNR: ", snr)
 
         Sknown = scipy.mean(yy**2)
         Nknown = scipy.var(n_cpx/scale)

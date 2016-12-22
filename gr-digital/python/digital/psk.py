@@ -68,7 +68,7 @@ def psk_constellation(m=_def_constellation_points, mod_code=_def_mod_code,
     """
     k = log(m) / log(2.0)
     if (k != int(k)):
-        raise StandardError('Number of constellation points must be a power of two.')
+        raise Exception('Number of constellation points must be a power of two.')
     points = [exp(2*pi*(0+1j)*i/m) for i in range(0,m)]
     pre_diff_code, post_diff_code = create_encodings(mod_code, m, differential)
     if post_diff_code is not None:
