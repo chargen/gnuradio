@@ -20,6 +20,8 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
+
 import optfir, math
 
 from gnuradio import gr, fft
@@ -147,9 +149,9 @@ class decimator_ccf(gr.hier_block2):
     '''
     def __init__(self, decim, taps=None, channel=0, atten=100,
                  use_fft_rotators=True, use_fft_filters=True):
-	gr.hier_block2.__init__(self, "pfb_decimator_ccf",
-				gr.io_signature(1, 1, gr.sizeof_gr_complex),
-				gr.io_signature(1, 1, gr.sizeof_gr_complex))
+        gr.hier_block2.__init__(self, "pfb_decimator_ccf",
+                                gr.io_signature(1, 1, gr.sizeof_gr_complex),
+                                gr.io_signature(1, 1, gr.sizeof_gr_complex))
 
         self._decim = decim
         self._channel = channel
@@ -255,7 +257,7 @@ class arb_resampler_ccf(gr.hier_block2):
                             raise RuntimeError("optfir could not generate an appropriate filter.")
 
         self.pfb = filter.pfb_arb_resampler_ccf(self._rate, self._taps, self._size)
-        #print "PFB has %d taps\n" % (len(self._taps),)
+        #print("PFB has %d taps\n" % (len(self._taps),))
 
         self.connect(self, self.pfb)
         self.connect(self.pfb, self)

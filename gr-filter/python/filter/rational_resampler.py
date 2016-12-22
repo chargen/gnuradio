@@ -19,6 +19,8 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
+
 from gnuradio import gr, gru
 import filter_swig as filter
 
@@ -38,7 +40,7 @@ def design_filter(interpolation, decimation, fractional_bw):
     """
 
     if fractional_bw >= 0.5 or fractional_bw <= 0:
-        raise ValueError, "Invalid fractional_bandwidth, must be in (0, 0.5)"
+        raise ValueError("Invalid fractional_bandwidth, must be in (0, 0.5)")
 
     beta = 7.0
     halfband = 0.5
@@ -82,10 +84,10 @@ class _rational_resampler_base(gr.hier_block2):
         """
 
         if not isinstance(interpolation, int) or interpolation < 1:
-            raise ValueError, "interpolation must be an integer >= 1"
+            raise ValueError("interpolation must be an integer >= 1")
 
         if not isinstance(decimation, int) or decimation < 1:
-            raise ValueError, "decimation must be an integer >= 1"
+            raise ValueError("decimation must be an integer >= 1")
 
         if taps is None and fractional_bw is None:
             fractional_bw = 0.4
@@ -108,11 +110,11 @@ class _rational_resampler_base(gr.hier_block2):
             taps = design_filter(interpolation, decimation, fractional_bw)
 
         self.resampler = resampler_base(interpolation, decimation, taps)
-	gr.hier_block2.__init__(self, "rational_resampler",
-				gr.io_signature(1, 1, self.resampler.input_signature().sizeof_stream_item(0)),
-				gr.io_signature(1, 1, self.resampler.output_signature().sizeof_stream_item(0)))
+        gr.hier_block2.__init__(self, "rational_resampler",
+                                gr.io_signature(1, 1, self.resampler.input_signature().sizeof_stream_item(0)),
+                                gr.io_signature(1, 1, self.resampler.output_signature().sizeof_stream_item(0)))
 
-	self.connect(self, self.resampler, self)
+        self.connect(self, self.resampler, self)
 
     def taps(self):
         return self.resampler.taps()
@@ -124,7 +126,7 @@ class rational_resampler_fff(_rational_resampler_base):
         float input, float output and float taps.
         """
         _rational_resampler_base.__init__(self, filter.rational_resampler_base_fff,
-				          interpolation, decimation, taps, fractional_bw)
+                                          interpolation, decimation, taps, fractional_bw)
 
 class rational_resampler_ccf(_rational_resampler_base):
     def __init__(self, interpolation, decimation, taps=None, fractional_bw=None):
