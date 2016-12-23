@@ -22,7 +22,9 @@
 
 from __future__ import print_function
 
-import optfir, math
+import math
+
+from . import optfir
 
 from gnuradio import gr, fft
 import filter_swig as filter

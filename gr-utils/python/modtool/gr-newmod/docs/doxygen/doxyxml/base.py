@@ -30,7 +30,7 @@ import pdb
 
 from xml.parsers.expat import ExpatError
 
-from generated from . import compound
+from .generated import compound
 
 
 class Base(object):

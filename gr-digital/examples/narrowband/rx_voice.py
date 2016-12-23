@@ -116,8 +116,7 @@ def main():
 
         tb.audio_tx.msgq().insert_tail(gr.message_from_string(payload))
 
-        print("ok = %r  n_rcvd = %4d  n_right = %4d" % ()
-            ok, n_rcvd, n_right)
+        print("ok = %r  n_rcvd = %4d  n_right = %4d" % (ok, n_rcvd, n_right))
 
     demods = digital.modulation_utils.type_1_demods()
 
