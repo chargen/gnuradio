@@ -19,6 +19,7 @@
 #
 
 from __future__ import print_function
+from __future__ import absolute_import
 
 '''
 Based on 2 papers:
@@ -28,8 +29,6 @@ for an in-depth description of a widely used algorithm for channel construction.
 [2] Harish Vangala, Emanuele Viterbo, Yi Hong: 'A Comparative Study of Polar Code Constructions for the AWGN Channel', 2015
 for an overview of different approaches
 '''
-from __future__ import absolute_import
-
 
 from scipy.optimize import fsolve
 from scipy.special import erfc

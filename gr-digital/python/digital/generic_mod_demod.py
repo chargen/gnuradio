@@ -20,14 +20,13 @@
 #
 
 from __future__ import print_function
+from __future__ import absolute_import
 
 # See gnuradio-examples/python/digital for examples
 
 """
 Generic modulation and demodulation.
 """
-from __future__ import absolute_import
-
 from gnuradio import gr
 from .modulation_utils import extract_kwargs_from_options_for_class
 from .utils import mod_codes
