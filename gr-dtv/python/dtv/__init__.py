@@ -24,6 +24,7 @@
 '''
 Blocks and utilities for digital TV module.
 '''
+from __future__ import absolute_import
 import os
 
 try:
@@ -34,4 +35,4 @@ except ImportError:
     from dtv_swig import *
 
 # Import pure python code here
-from atsc_rx import *
+from .atsc_rx import *

@@ -23,13 +23,14 @@
 #
 
 from __future__ import print_function
+from __future__ import absolute_import
 
 # See gnuradio-examples/python/digital for examples
 
 from gnuradio import gr
 from gnuradio import analog
 from gnuradio import blocks
-import modulation_utils
+from . import modulation_utils
 import digital_swig as digital
 from math import pi
 import numpy

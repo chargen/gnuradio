@@ -411,10 +411,10 @@ class test_fft_filter(gr_unittest.TestCase):
             except:
                 expected = open('expected', 'w')
                 for x in expected_result:
-                    expected.write(`x` + '\n')
+                    expected.write(repr(x) + '\n')
                 actual = open('actual', 'w')
                 for x in result_data:
-                    actual.write(`x` + '\n')
+                    actual.write(repr(x) + '\n')
                 raise
 
     def xtest_fff_005(self):

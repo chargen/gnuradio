@@ -66,7 +66,7 @@ def str_to_num (value):
     try:
         scale = 1.0
         suffix = value[-1]
-        if scale_factor.has_key (suffix):
+        if suffix in scale_factor:
             return float (value[0:-1]) * scale_factor[suffix]
         return float (value)
     except:

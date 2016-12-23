@@ -21,6 +21,7 @@
 '''
 Blocks and utilities for digital modulation and demodulation.
 '''
+from __future__ import absolute_import
 
 # The presence of this file turns this directory into a Python package
 
@@ -32,28 +33,28 @@ except ImportError:
     dirname, filename = os.path.split(os.path.abspath(__file__))
     __path__.append(os.path.join(dirname, "..", "..", "swig"))
     from digital_swig import *
-from psk import *
-from qam import *
-from qamlike import *
-from bpsk import *
-from qpsk import *
-from gmsk import *
-from gfsk import *
-from cpm import *
-from pkt import *
-from crc import *
-from modulation_utils import *
-from ofdm import *
-from ofdm_receiver import *
-from ofdm_sync_fixed import *
-from ofdm_sync_ml import *
-from ofdm_sync_pnac import *
-from ofdm_sync_pn import *
-from ofdm_txrx import ofdm_tx, ofdm_rx
-from soft_dec_lut_gen import *
-from psk_constellations import *
-from qam_constellations import *
-from constellation_map_generator import *
+from .psk import *
+from .qam import *
+from .qamlike import *
+from .bpsk import *
+from .qpsk import *
+from .gmsk import *
+from .gfsk import *
+from .cpm import *
+from .pkt import *
+from .crc import *
+from .modulation_utils import *
+from .ofdm import *
+from .ofdm_receiver import *
+from .ofdm_sync_fixed import *
+from .ofdm_sync_ml import *
+from .ofdm_sync_pnac import *
+from .ofdm_sync_pn import *
+from .ofdm_txrx import ofdm_tx, ofdm_rx
+from .soft_dec_lut_gen import *
+from .psk_constellations import *
+from .qam_constellations import *
+from .constellation_map_generator import *
 
-import packet_utils
-import ofdm_packet_utils
+from . import packet_utils
+from . import ofdm_packet_utils

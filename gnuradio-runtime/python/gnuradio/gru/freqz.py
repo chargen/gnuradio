@@ -331,7 +331,7 @@ def freqz(b, a, worN=None, whole=0, plot=None):
     if worN is None:
         N = 512
         w = Num.arange(0,lastpoint,lastpoint/N)
-    elif isinstance(worN, types.IntType):
+    elif isinstance(worN, int):
         N = worN
         w = Num.arange(0,lastpoint,lastpoint/N)
     else:

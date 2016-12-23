@@ -20,6 +20,7 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
 from gnuradio import gr, gr_unittest, blocks
 
 import random
@@ -57,8 +58,8 @@ class counter3(gr.feval_dd):
             t = self.count
             self.count = self.count + self.step_size
             self.f(self.count)
-        except Exception, e:
-            print "Exception: ", e
+        except Exception as e:
+            print("Exception: ", e)
         return t
 
 def foobar3(new_t):
@@ -79,8 +80,8 @@ class counter4(gr.feval_dd):
             t = self.count
             self.count = self.count + self.step_size
             self.obj_instance.foobar4(self.count)
-        except Exception, e:
-            print "Exception: ", e
+        except Exception as e:
+            print("Exception: ", e)
         return t
 
 

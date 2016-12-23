@@ -22,15 +22,16 @@
 """
 QAM modulation and demodulation.
 """
+from __future__ import absolute_import
 
 from math import pi, sqrt, log
 
 from gnuradio import gr
-from generic_mod_demod import generic_mod, generic_demod
-from generic_mod_demod import shared_mod_args, shared_demod_args
-from utils.gray_code import gray_code
-from utils import mod_codes
-import modulation_utils
+from .generic_mod_demod import generic_mod, generic_demod
+from .generic_mod_demod import shared_mod_args, shared_demod_args
+from .utils.gray_code import gray_code
+from .utils import mod_codes
+from . import modulation_utils
 import digital_swig as digital
 
 # Default number of points in constellation.

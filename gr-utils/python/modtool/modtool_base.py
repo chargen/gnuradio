@@ -21,14 +21,15 @@
 """ Base class for the modules """
 
 from __future__ import print_function
+from __future__ import absolute_import
 
 import os
 import re
 from argparse import ArgumentParser, RawDescriptionHelpFormatter
 
 from gnuradio import gr
-from util_functions import get_modname
-from scm import SCMRepoFactory
+from .util_functions import get_modname
+from .scm import SCMRepoFactory
 
 class ModToolException(BaseException):
     """ Standard exception for modtool classes. """

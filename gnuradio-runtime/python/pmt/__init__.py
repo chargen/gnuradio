@@ -38,6 +38,7 @@ The PMT library supports the following major types:
 bool, symbol (string), integer, real, complex, null, pair, list,
 vector, dict, uniform_vector, any (boost::any cast)
 '''
+from __future__ import absolute_import
 
 import os
 
@@ -55,5 +56,5 @@ PMT_T = get_PMT_T()
 PMT_F = get_PMT_F()
 PMT_EOF = get_PMT_EOF()
 
-from pmt_to_python import pmt_to_python as to_python
-from pmt_to_python import python_to_pmt as to_pmt
+from .pmt_to_python import pmt_to_python as to_python
+from .pmt_to_python import python_to_pmt as to_pmt

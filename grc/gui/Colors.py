@@ -16,6 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 """
+from __future__ import print_function
 try:
     import pygtk
     pygtk.require('2.0')
@@ -45,6 +46,6 @@ try:
     CONNECTION_DISABLED_COLOR = get_color('#BBBBBB')
     CONNECTION_ERROR_COLOR = get_color('red')
 except:
-    print 'Unable to import Colors'
+    print('Unable to import Colors')
 
 DEFAULT_DOMAIN_COLOR_CODE = '#777777'

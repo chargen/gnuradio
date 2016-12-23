@@ -158,8 +158,8 @@ class test_classify(gr_unittest.TestCase):
         scl = 1.0/sqr(dwav[0])
         k = 1
         for e in range(len(wvps)):
-            wvps[e] = scl*sqr(dwav[k:k+(01<<e)]).sum()
-            k += 01<<e
+            wvps[e] = scl*sqr(dwav[k:k+(0o1<<e)]).sum()
+            k += 0o1<<e
 
         src = blocks.vector_source_f(src_data, False, len(src_data))
         kon = wavelet.wvps_ff(len(src_data))

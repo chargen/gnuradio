@@ -16,6 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 """
+from __future__ import absolute_import
 
 import pygtk
 pygtk.require('2.0')
@@ -203,7 +204,7 @@ class SubMenuCreator(object):
 
     def _fill_flow_graph_recent_submenu(self, action):
         """menu showing recent flow-graphs"""
-        import Preferences
+        from . import Preferences
         menu = gtk.Menu()
         recent_files = Preferences.get_recent_files()
         if len(recent_files) > 0:

@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 #
 # Copyright 2007,2014 Free Software Foundation, Inc.
 #
@@ -25,9 +26,9 @@ from runtime_swig import top_block_swig, \
     top_block_unlock_unlocked, dot_graph_tb
 
 #import gnuradio.gr.gr_threading as _threading
-import gr_threading as _threading
+from . import gr_threading as _threading
 
-from hier_block2 import hier_block2
+from .hier_block2 import hier_block2
 
 class _top_block_waiter(_threading.Thread):
     """

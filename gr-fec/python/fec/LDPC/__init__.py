@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 #
 # Copyright 2015 Free Software Foundation, Inc.
 #
@@ -19,4 +20,4 @@
 # Boston, MA 02110-1301, USA.
 #
 
-from Generate_LDPC_matrix_functions import *
+from .Generate_LDPC_matrix_functions import *

@@ -1,3 +1,4 @@
+from __future__ import print_function
 # Copyright 2008-2015 Free Software Foundation, Inc.
 # This file is part of GNU Radio
 #
@@ -239,14 +240,14 @@ class FlowGraph(Element):
         # Load imports
         for expr in self.get_imports():
             try:
-                exec expr in namespace
+                exec(expr, namespace)
             except:
                 pass
 
         for id, expr in self.get_python_modules():
             try:
                 module = imp.new_module(id)
-                exec expr in module.__dict__
+                exec(expr, module.__dict__)
                 namespace[id] = module
             except:
                 pass

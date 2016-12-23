@@ -20,6 +20,7 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
 from gnuradio import gr
 from gnuradio import blocks
 from gnuradio import filter
@@ -61,9 +62,9 @@ class pfb_top_block(gr.top_block):
 
         # Calculate the number of taps per channel for our own information
         tpc = scipy.ceil(float(len(self._taps)) /  float(self._M))
-        print "Number of taps:     ", len(self._taps)
-        print "Number of channels: ", self._M
-        print "Taps per channel:   ", tpc
+        print("Number of taps:     ", len(self._taps))
+        print("Number of channels: ", self._M)
+        print("Taps per channel:   ", tpc)
 
         # Create a set of signals at different frequencies
         #   freqs lists the frequencies of the signals that get stored
@@ -105,7 +106,7 @@ def main():
     tb.run()
 
     tend = time.time()
-    print "Run time: %f" % (tend - tstart)
+    print("Run time: %f" % (tend - tstart))
 
     if 1:
         fig_in = pylab.figure(1, figsize=(16,9), facecolor="w")

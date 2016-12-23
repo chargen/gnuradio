@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
 from gnuradio import gr
 from gnuradio import trellis, digital, blocks
 from gnuradio import eng_notation
@@ -56,7 +57,7 @@ def run_test (f,Kb,bitspersymbol,K,dimensionality,constellation,N0,seed):
     #print "final state = " , enc.ST()
 
     if len(dst.data()) != len(packet):
-        print "Error: not enough data:", len(dst.data()), len(packet)
+        print("Error: not enough data:", len(dst.data()), len(packet))
     ntotal=len(packet)
     nwrong = sum(abs(packet-numpy.array(dst.data())));
     return (ntotal,nwrong,abs(packet-numpy.array(dst.data())))
@@ -73,7 +74,7 @@ def main():
     (options, args) = parser.parse_args ()
     if len(args) != 0:
         parser.print_help()
-        raise SystemExit, 1
+        raise SystemExit(1)
 
     fname=options.fsm_file
     esn0_db=float(options.esn0)
@@ -108,14 +109,14 @@ def main():
         terr_b=terr_b+e
         terr_p=terr_p+(e!=0)
         if ((i+1)%100==0) : # display progress
-            print i+1,terr_p, '%.2e' % ((1.0*terr_p)/(i+1)),tot_b,terr_b, '%.2e' % ((1.0*terr_b)/tot_b)
+            print(i+1,terr_p, '%.2e' % ((1.0*terr_p)/(i+1)),tot_b,terr_b, '%.2e' % ((1.0*terr_b)/tot_b))
 	if e!=0:
-            print "rep=",i, e
+            print("rep=",i, e)
             for k in range(Kb):
                 if pattern[k]!=0:
-                    print k
+                    print(k)
     # estimate of the bit error rate
-    print rep,terr_p, '%.2e' % ((1.0*terr_p)/(i+1)),tot_b,terr_b, '%.2e' % ((1.0*terr_b)/tot_b)
+    print(rep,terr_p, '%.2e' % ((1.0*terr_p)/(i+1)),tot_b,terr_b, '%.2e' % ((1.0*terr_b)/tot_b))
 
 
 

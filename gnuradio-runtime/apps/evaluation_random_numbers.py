@@ -20,6 +20,7 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
 from gnuradio import gr
 import numpy as np
 from scipy.stats import norm, laplace, rayleigh
@@ -40,7 +41,7 @@ laplace_num_bins = 31
 
 rndm = gr.random() # instance of gnuradio random class (gr::random)
 
-print 'All histograms contain',num_tests,'realisations.'
+print('All histograms contain',num_tests,'realisations.')
 
 #*** GENERATE DATA ***#
 

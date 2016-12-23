@@ -16,6 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 """
+from __future__ import print_function
 
 import os
 import sys
@@ -155,7 +156,7 @@ class Platform(Element):
                 # print >> sys.stderr, 'Warning: Block validation failed:\n\t%s\n\tIgnoring: %s' % (e, xml_file)
                 pass
             except Exception as e:
-                print >> sys.stderr, 'Warning: XML parsing failed:\n\t%r\n\tIgnoring: %s' % (e, xml_file)
+                print('Warning: XML parsing failed:\n\t%r\n\tIgnoring: %s' % (e, xml_file), file=sys.stderr)
 
         # Add blocks to block tree
         for key, block in self.blocks.iteritems():
@@ -193,7 +194,7 @@ class Platform(Element):
         block = self.Block(self._flow_graph, n)
         key = block.get_key()
         if key in self.blocks:
-            print >> sys.stderr, 'Warning: Block with key "{}" already exists.\n\tIgnoring: {}'.format(key, xml_file)
+            print('Warning: Block with key "{}" already exists.\n\tIgnoring: {}'.format(key, xml_file), file=sys.stderr)
         else:  # Store the block
             self.blocks[key] = block
             self._blocks_n[key] = n
@@ -228,10 +229,10 @@ class Platform(Element):
 
         key = n.find('key')
         if not key:
-            print >> sys.stderr, 'Warning: Domain with emtpy key.\n\tIgnoring: {}'.format(xml_file)
+            print('Warning: Domain with emtpy key.\n\tIgnoring: {}'.format(xml_file), file=sys.stderr)
             return
         if key in self.domains:  # test against repeated keys
-            print >> sys.stderr, 'Warning: Domain with key "{}" already exists.\n\tIgnoring: {}'.format(key, xml_file)
+            print('Warning: Domain with key "{}" already exists.\n\tIgnoring: {}'.format(key, xml_file), file=sys.stderr)
             return
 
         #to_bool = lambda s, d: d if s is None else s.lower() not in ('false', 'off', '0', '')
@@ -246,7 +247,7 @@ class Platform(Element):
             gtk.gdk.color_parse(color)
         except (ValueError, ImportError):
             if color:  # no color is okay, default set in GUI
-                print >> sys.stderr, 'Warning: Can\'t parse color code "{}" for domain "{}" '.format(color, key)
+                print('Warning: Can\'t parse color code "{}" for domain "{}" '.format(color, key), file=sys.stderr)
                 color = None
 
         self.domains[key] = dict(
@@ -258,9 +259,9 @@ class Platform(Element):
         for connection_n in n.findall('connection'):
             key = (connection_n.find('source_domain'), connection_n.find('sink_domain'))
             if not all(key):
-                print >> sys.stderr, 'Warning: Empty domain key(s) in connection template.\n\t{}'.format(xml_file)
+                print('Warning: Empty domain key(s) in connection template.\n\t{}'.format(xml_file), file=sys.stderr)
             elif key in self.connection_templates:
-                print >> sys.stderr, 'Warning: Connection template "{}" already exists.\n\t{}'.format(key, xml_file)
+                print('Warning: Connection template "{}" already exists.\n\t{}'.format(key, xml_file), file=sys.stderr)
             else:
                 self.connection_templates[key] = connection_n.find('make') or ''
 

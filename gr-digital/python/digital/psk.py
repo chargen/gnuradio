@@ -22,15 +22,16 @@
 """
 PSK modulation and demodulation.
 """
+from __future__ import absolute_import
 
 from math import pi, log
 from cmath import exp
 
 import digital_swig
-import modulation_utils
-from utils import mod_codes, gray_code
-from generic_mod_demod import generic_mod, generic_demod
-from generic_mod_demod import shared_mod_args, shared_demod_args
+from . import modulation_utils
+from .utils import mod_codes, gray_code
+from .generic_mod_demod import generic_mod, generic_demod
+from .generic_mod_demod import shared_mod_args, shared_demod_args
 
 # Default number of points in constellation.
 _def_constellation_points = 4

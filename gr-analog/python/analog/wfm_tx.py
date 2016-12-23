@@ -20,11 +20,12 @@
 #
 
 from __future__ import print_function
+from __future__ import absolute_import
 
 import math
 from gnuradio import gr
 from gnuradio import filter
-from fm_emph import fm_preemph
+from .fm_emph import fm_preemph
 
 try:
     from gnuradio import analog

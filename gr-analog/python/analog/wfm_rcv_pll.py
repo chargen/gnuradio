@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 #
 # Copyright 2005,2006,2012-2013 Free Software Foundation, Inc.
 #
@@ -22,7 +23,7 @@
 from gnuradio import gr
 from gnuradio import blocks
 from gnuradio import filter
-from fm_emph import fm_deemph
+from .fm_emph import fm_deemph
 import math
 
 try:

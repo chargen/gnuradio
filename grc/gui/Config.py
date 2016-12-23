@@ -16,6 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 """
+from __future__ import print_function
 
 import sys
 import os
@@ -57,7 +58,7 @@ class Config(_Config):
                 raise Exception()
             return value
         except:
-            print >> sys.stderr, "Error: invalid 'canvas_default_size' setting."
+            print("Error: invalid 'canvas_default_size' setting.", file=sys.stderr)
             return Constants.DEFAULT_CANVAS_SIZE_DEFAULT
 
     @property
@@ -69,6 +70,6 @@ class Config(_Config):
                 raise Exception()
         except:
             font_size = Constants.DEFAULT_FONT_SIZE
-            print >> sys.stderr, "Error: invalid 'canvas_font_size' setting."
+            print("Error: invalid 'canvas_font_size' setting.", file=sys.stderr)
 
         return font_size

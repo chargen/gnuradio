@@ -16,6 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 """
+from __future__ import absolute_import
 
 import pygtk
 pygtk.require('2.0')
@@ -24,7 +25,7 @@ import gobject
 
 from Cheetah.Template import Template
 
-from Constants import POSSIBLE_ROTATIONS, CANVAS_GRID_SIZE, DPI_SCALING
+from .Constants import POSSIBLE_ROTATIONS, CANVAS_GRID_SIZE, DPI_SCALING
 
 
 def rotate_pixmap(gc, src_pixmap, dst_pixmap, angle=gtk.gdk.PIXBUF_ROTATE_COUNTERCLOCKWISE):
@@ -73,7 +74,7 @@ def get_rotated_coordinate(coor, rotation):
     return x * cos_r + y * sin_r, -x * sin_r + y * cos_r
 
 
-def get_angle_from_coordinates((x1, y1), (x2, y2)):
+def get_angle_from_coordinates(xxx_todo_changeme, xxx_todo_changeme1):
     """
     Given two points, calculate the vector direction from point1 to point2, directions are multiples of 90 degrees.
 
@@ -84,6 +85,8 @@ def get_angle_from_coordinates((x1, y1), (x2, y2)):
     Returns:
         the direction in degrees
     """
+    (x1, y1) = xxx_todo_changeme
+    (x2, y2) = xxx_todo_changeme1
     if y1 == y2:  # 0 or 180
         return 0 if x2 > x1 else 180
     else:  # 90 or 270

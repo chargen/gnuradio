@@ -22,6 +22,7 @@
 '''
 Blocks for interfacing with ZeroMQ endpoints.
 '''
+from __future__ import absolute_import
 
 import os
 
@@ -32,5 +33,5 @@ except ImportError:
     __path__.append(os.path.join(dirname, "..", "..", "swig"))
     from zeromq_swig import *
 
-from probe_manager import probe_manager
-from rpc_manager import rpc_manager
+from .probe_manager import probe_manager
+from .rpc_manager import rpc_manager

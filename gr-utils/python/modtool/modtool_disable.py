@@ -21,13 +21,14 @@
 """ Disable blocks module """
 
 from __future__ import print_function
+from __future__ import absolute_import
 
 import os
 import re
 import sys
 
-from modtool_base import ModTool
-from cmakefile_editor import CMakeFileEditor
+from .modtool_base import ModTool
+from .cmakefile_editor import CMakeFileEditor
 
 
 class ModToolDisable(ModTool):

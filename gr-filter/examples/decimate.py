@@ -20,6 +20,7 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
 from gnuradio import gr
 from gnuradio import blocks
 from gnuradio import filter
@@ -61,9 +62,9 @@ class pfb_top_block(gr.top_block):
 
         # Calculate the number of taps per channel for our own information
         tpc = scipy.ceil(float(len(self._taps)) /  float(self._decim))
-        print "Number of taps:     ", len(self._taps)
-        print "Number of filters:  ", self._decim
-        print "Taps per channel:   ", tpc
+        print("Number of taps:     ", len(self._taps))
+        print("Number of filters:  ", self._decim)
+        print("Taps per channel:   ", tpc)
 
         # Build the input signal source
         # We create a list of freqs, and a sine wave is generated and added to the source
@@ -100,7 +101,7 @@ def main():
     tstart = time.time()
     tb.run()
     tend = time.time()
-    print "Run time: %f" % (tend - tstart)
+    print("Run time: %f" % (tend - tstart))
 
     if 1:
         fig1 = pylab.figure(1, figsize=(16,9))

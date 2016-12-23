@@ -20,6 +20,7 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
 from gnuradio import gr
 from gnuradio import filter
 from gnuradio import blocks
@@ -34,14 +35,14 @@ try:
     from PyQt4 import QtGui, QtCore
     import sip
 except ImportError:
-    print "Error: Program requires PyQt4 and gr-qtgui."
+    print("Error: Program requires PyQt4 and gr-qtgui.")
     sys.exit(1)
 
 try:
     from usrp_display_qtgui import Ui_MainWindow
 except ImportError:
-    print "Error: could not find usrp_display_qtgui.py:"
-    print "\t\"pyuic4 usrp_display_qtgui.ui -o usrp_display_qtgui.py\""
+    print("Error: could not find usrp_display_qtgui.py:")
+    print("\t\"pyuic4 usrp_display_qtgui.ui -o usrp_display_qtgui.py\"")
     sys.exit(1)
 
 
@@ -212,9 +213,9 @@ class my_top_block(gr.top_block):
         self.connect(self.u, self.amp, self.snk)
 
         if self.show_debug_info:
-            print "Bandwidth: ", self.u.get_samp_rate()
-            print "Center Freq: ", self.u.get_center_freq()
-            print "Freq Range: ", self.u.get_freq_range()
+            print("Bandwidth: ", self.u.get_samp_rate())
+            print("Center Freq: ", self.u.get_center_freq())
+            print("Freq Range: ", self.u.get_freq_range())
 
         # Get the reference pointer to the SpectrumDisplayForm QWidget
         # Wrap the pointer as a PyQt SIP object

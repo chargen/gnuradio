@@ -19,12 +19,13 @@
 #
 
 from __future__ import print_function
+from __future__ import absolute_import
 
 import numpy as np
-from common import PolarCommon
+from .common import PolarCommon
 
 # for dev
-from encoder import PolarEncoder
+from .encoder import PolarEncoder
 from matplotlib import pyplot as plt
 
 

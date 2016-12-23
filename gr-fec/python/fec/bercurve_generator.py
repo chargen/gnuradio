@@ -20,10 +20,11 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import absolute_import
 from gnuradio import gr, blocks
 import numpy
 
-from fec_test import fec_test
+from .fec_test import fec_test
 
 class bercurve_generator(gr.hier_block2):
 

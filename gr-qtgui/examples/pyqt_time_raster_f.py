@@ -20,6 +20,7 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
 from gnuradio import gr
 from gnuradio import blocks
 import sys
@@ -29,7 +30,7 @@ try:
     from PyQt5 import QtWidgets, Qt
     import sip
 except ImportError:
-    print "Error: Program requires PyQt5 and gr-qtgui."
+    print("Error: Program requires PyQt5 and gr-qtgui.")
     sys.exit(1)
 
 class dialog_box(QtWidgets.QWidget):

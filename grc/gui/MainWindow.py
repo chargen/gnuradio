@@ -272,7 +272,7 @@ class MainWindow(gtk.Window):
                 file_path=file_path,
             )
             if file_path: Messages.send_end_load()
-        except Exception, e: #return on failure
+        except Exception as e: #return on failure
             Messages.send_fail_load(e)
             if isinstance(e, KeyError) and str(e) == "'options'":
                 # This error is unrecoverable, so crash gracefully

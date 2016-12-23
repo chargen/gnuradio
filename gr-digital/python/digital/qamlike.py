@@ -21,9 +21,10 @@
 """
 This file contains constellations that are similar to QAM, but are not perfect squares.
 """
+from __future__ import absolute_import
 
 import digital_swig
-from qam import large_ampls_to_corners_mapping
+from .qam import large_ampls_to_corners_mapping
 
 def qam32_holeinside_constellation(large_ampls_to_corners=False):
     # First make constellation for one quadrant.

@@ -24,13 +24,14 @@ from __future__ import print_function
 [0] Erdal Arikan: 'Channel Polarization: A Method for Constructing Capacity-Achieving Codes for Symmetric Binary-Input Memoryless Channels', 2009
 foundational paper for polar codes.
 '''
+from __future__ import absolute_import
 
 
-from channel_construction_bec import calculate_bec_channel_capacities
-from channel_construction_bec import design_snr_to_bec_eta
-from channel_construction_bec import bhattacharyya_bounds
-from channel_construction_awgn import tal_vardy_tpm_algorithm
-from helper_functions import *
+from .channel_construction_bec import calculate_bec_channel_capacities
+from .channel_construction_bec import design_snr_to_bec_eta
+from .channel_construction_bec import bhattacharyya_bounds
+from .channel_construction_awgn import tal_vardy_tpm_algorithm
+from .helper_functions import *
 
 
 Z_PARAM_FIRST_HEADER_LINE = "Bhattacharyya parameters (Z-parameters) for a polar code"

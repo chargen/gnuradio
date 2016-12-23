@@ -6,6 +6,7 @@
 # Generated: Thu Aug  1 12:46:10 2013
 ##################################################
 
+from __future__ import absolute_import
 from gnuradio import analog
 from gnuradio import blocks
 from gnuradio import gr
@@ -13,10 +14,10 @@ from gnuradio.filter import firdes
 import math
 
 #Import locally
-from phase_noise_gen import *
-from iqbal_gen import *
-from distortion_2_gen import *
-from distortion_3_gen import *
+from .phase_noise_gen import *
+from .iqbal_gen import *
+from .distortion_2_gen import *
+from .distortion_3_gen import *
 
 class impairments(gr.hier_block2):
 

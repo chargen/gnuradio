@@ -19,8 +19,9 @@
 # the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 # Boston, MA 02111-1307, USA.
 
+from __future__ import absolute_import
 from gnuradio import gr, filter, analog
-from atsc_rx_filter import *
+from .atsc_rx_filter import *
 
 class atsc_rx(gr.hier_block2):
     def __init__(self, input_rate, sps):

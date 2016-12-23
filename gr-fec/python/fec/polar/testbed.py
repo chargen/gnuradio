@@ -19,12 +19,13 @@
 #
 
 from __future__ import print_function
+from __future__ import absolute_import
 
 
-from encoder import PolarEncoder
-from decoder import PolarDecoder
-import channel_construction as cc
-from helper_functions import *
+from .encoder import PolarEncoder
+from .decoder import PolarDecoder
+from . import channel_construction as cc
+from .helper_functions import *
 
 import matplotlib.pyplot as plt
 

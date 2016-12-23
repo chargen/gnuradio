@@ -20,6 +20,7 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
 from gnuradio import gr
 from gnuradio import filter
 from gnuradio import blocks
@@ -48,7 +49,7 @@ class mytb(gr.top_block):
         gr.top_block.__init__(self)
 
         rerate = float(fs_out) / float(fs_in)
-        print "Resampling from %f to %f by %f " %(fs_in, fs_out, rerate)
+        print("Resampling from %f to %f by %f " %(fs_in, fs_out, rerate))
 
         # Creating our own taps
         taps = filter.firdes.low_pass_2(32, 32, 0.25, 0.1, 80)

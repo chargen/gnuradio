@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
 from gnuradio import gr
 from gnuradio import blocks
 import argparse
@@ -105,7 +106,7 @@ def run_tests(func, N, iters):
         res = format_results(func.__name__, t)
         return res
     except AttributeError:
-        print "\tCould not run test. Skipping."
+        print("\tCould not run test. Skipping.")
         return None
 
 def main():
@@ -153,8 +154,8 @@ def main():
     args = parser.parse_args()
 
     if(args.list):
-        print "Available Tests to Run:"
-        print "\n".join(["\t{0}: {1}".format(i,f.__name__) for i,f in enumerate(avail_tests)])
+        print("Available Tests to Run:")
+        print("\n".join(["\t{0}: {1}".format(i,f.__name__) for i,f in enumerate(avail_tests)]))
         sys.exit(0)
 
     N = int(args.nitems)

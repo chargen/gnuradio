@@ -20,6 +20,7 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
 from gnuradio import gr, filter
 from gnuradio import analog
 from gnuradio import blocks
@@ -31,13 +32,13 @@ import sys
 try:
     import scipy
 except ImportError:
-    print "Error: could not import scipy (http://www.scipy.org/)"
+    print("Error: could not import scipy (http://www.scipy.org/)")
     sys.exit(1)
 
 try:
     import pylab
 except ImportError:
-    print "Error: could not import pylab (http://matplotlib.sourceforge.net/)"
+    print("Error: could not import pylab (http://matplotlib.sourceforge.net/)")
     sys.exit(1)
 
 class example_fir_filter_fff(gr.top_block):
@@ -51,7 +52,7 @@ class example_fir_filter_fff(gr.top_block):
         self._at = atten
         self._decim = D
         taps = filter.firdes.low_pass_2(1, self._fs, self._bw, self._tw, self._at)
-        print "Num. Taps: ", len(taps)
+        print("Num. Taps: ", len(taps))
 
         self.src  = analog.noise_source_f(analog.GR_GAUSSIAN, 1)
         self.head = blocks.head(gr.sizeof_float, self._nsamps)

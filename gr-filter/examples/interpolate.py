@@ -20,6 +20,7 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
 from gnuradio import gr
 from gnuradio import blocks
 from gnuradio import filter
@@ -80,9 +81,9 @@ class pfb_top_block(gr.top_block):
 
         # Calculate the number of taps per channel for our own information
         tpc = scipy.ceil(float(len(self._taps)) /  float(self._interp))
-        print "Number of taps:     ", len(self._taps)
-        print "Number of filters:  ", self._interp
-        print "Taps per channel:   ", tpc
+        print("Number of taps:     ", len(self._taps))
+        print("Number of filters:  ", self._interp)
+        print("Taps per channel:   ", tpc)
 
         # Create a couple of signals at different frequencies
         self.signal1 = analog.sig_source_c(self._fs, analog.GR_SIN_WAVE, freq1, 0.5)
@@ -121,7 +122,7 @@ def main():
     tstart = time.time()
     tb.run()
     tend = time.time()
-    print "Run time: %f" % (tend - tstart)
+    print("Run time: %f" % (tend - tstart))
 
 
     if 1:

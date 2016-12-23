@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
 from gnuradio import gr
 from gnuradio import audio
 from gnuradio import trellis, digital, filter, blocks
@@ -99,9 +100,9 @@ def main(args):
         terr_s=terr_s+e
         terr_p=terr_p+(terr_s!=0)
         if ((i+1)%100==0) : # display progress
-            print i+1,terr_p, '%.2e' % ((1.0*terr_p)/(i+1)),tot_s,terr_s, '%.2e' % ((1.0*terr_s)/tot_s)
+            print(i+1,terr_p, '%.2e' % ((1.0*terr_p)/(i+1)),tot_s,terr_s, '%.2e' % ((1.0*terr_s)/tot_s))
     # estimate of the (short or symbol) error rate
-    print rep,terr_p, '%.2e' % ((1.0*terr_p)/(i+1)),tot_s,terr_s, '%.2e' % ((1.0*terr_s)/tot_s)
+    print(rep,terr_p, '%.2e' % ((1.0*terr_p)/(i+1)),tot_s,terr_s, '%.2e' % ((1.0*terr_s)/tot_s))
 
 
 if __name__ == '__main__':

@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
 from gnuradio import gr
 from gnuradio import audio
 from gnuradio import trellis, digital, blocks
@@ -89,9 +90,9 @@ def main(args):
         tot_s=tot_s+s
         terr_s=terr_s+e
         if (i%100==0):
-            print i,s,e,tot_s,terr_s, '%e' % ((1.0*terr_s)/tot_s)
+            print(i,s,e,tot_s,terr_s, '%e' % ((1.0*terr_s)/tot_s))
     # estimate of the (short) error rate
-    print tot_s,terr_s, '%e' % ((1.0*terr_s)/tot_s)
+    print(tot_s,terr_s, '%e' % ((1.0*terr_s)/tot_s))
 
 
 if __name__ == '__main__':

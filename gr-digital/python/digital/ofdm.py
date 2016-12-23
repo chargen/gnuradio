@@ -21,15 +21,16 @@
 #
 
 from __future__ import print_function
+from __future__ import absolute_import
 
 import math
 from gnuradio import gr, fft
 from gnuradio import blocks
 import digital_swig as digital
-import ofdm_packet_utils
-from ofdm_receiver import ofdm_receiver
+from . import ofdm_packet_utils
+from .ofdm_receiver import ofdm_receiver
 import gnuradio.gr.gr_threading as _threading
-import psk, qam
+from . import psk, qam
 
 # /////////////////////////////////////////////////////////////////////////////
 #                   mod/demod with packets as i/o

@@ -20,18 +20,19 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import absolute_import
 from gnuradio.fec.bitflip import read_bitlist
 from gnuradio import gr, blocks, analog
 import math
 import sys
 
-if sys.modules.has_key("gnuradio.digital"):
+if "gnuradio.digital" in sys.modules:
     digital = sys.modules["gnuradio.digital"]
 else:
     from gnuradio import digital
 
-from extended_encoder import extended_encoder
-from extended_decoder import extended_decoder
+from .extended_encoder import extended_encoder
+from .extended_decoder import extended_decoder
 
 class fec_test(gr.hier_block2):
 

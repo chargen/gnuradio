@@ -16,6 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 """
+from __future__ import print_function
 
 import os
 import sys
@@ -58,7 +59,7 @@ class Platform(Element, _Platform):
                 import shutil
                 shutil.move(old_gui_prefs_file, gui_prefs_file)
             except Exception as e:
-                print >> sys.stderr, e
+                print(e, file=sys.stderr)
 
     ##############################################
     # Constructors

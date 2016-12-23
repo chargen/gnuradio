@@ -366,7 +366,7 @@ class Param(Element):
         self._evaluated = None
         try:
             self._evaluated = self.evaluate()
-        except Exception, e:
+        except Exception as e:
             self.add_error_message(str(e))
 
     def get_evaluated(self):
@@ -399,7 +399,7 @@ class Param(Element):
             # Raise exception if python cannot evaluate this value
             try:
                 e = self.get_parent().get_parent().evaluate(v)
-            except Exception, e:
+            except Exception as e:
                 raise Exception('Value "{}" cannot be evaluated:\n{}'.format(v, e))
             # Raise an exception if the data is invalid
             if t == 'raw':
@@ -434,7 +434,7 @@ class Param(Element):
             # Raise exception if python cannot evaluate this value
             try:
                 e = self.get_parent().get_parent().evaluate(v)
-            except Exception, e:
+            except Exception as e:
                 raise Exception('Value "{}" cannot be evaluated:\n{}'.format(v, e))
             # Raise an exception if the data is invalid
             if t == 'complex_vector':
@@ -552,7 +552,7 @@ class Param(Element):
             # New namespace
             n = dict()
             try:
-                exec v in n
+                exec(v, n)
             except ImportError:
                 raise Exception('Import "{}" failed.'.format(v))
             except Exception:

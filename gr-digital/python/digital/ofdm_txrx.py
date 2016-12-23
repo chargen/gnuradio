@@ -26,6 +26,7 @@ to form an OFDM Tx/Rx--simply use these.
 """
 
 from __future__ import print_function
+from __future__ import absolute_import
 
 # Reminder: All frequency-domain stuff is in shifted form, i.e. DC carrier
 # in the middle!
@@ -33,7 +34,7 @@ from __future__ import print_function
 import numpy
 from gnuradio import gr
 import digital_swig as digital
-from utils import tagged_streams
+from .utils import tagged_streams
 
 try:
     # This will work when feature #505 is added.

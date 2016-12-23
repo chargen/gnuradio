@@ -85,7 +85,7 @@ class trellis_tb(gr.top_block):
     """
     A simple top block for use testing gr-trellis.
     """
-    def __init__(self, constellation, f, N0=0.25, seed=-666L):
+    def __init__(self, constellation, f, N0=0.25, seed=-666):
         """
         constellation - a constellation object used for modulation.
         f - a finite state machine specification used for coding.

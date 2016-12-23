@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
 from gnuradio import gr
 from gnuradio import blocks
 import math, sys, os, time
@@ -143,7 +144,7 @@ def timeit(tb, iterations):
     '''
     r = gr.enable_realtime_scheduling()
     if r != gr.RT_OK:
-        print "Warning: failed to enable realtime scheduling"
+        print("Warning: failed to enable realtime scheduling")
 
     times = []
     for i in xrange(iterations):

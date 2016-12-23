@@ -20,6 +20,7 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import absolute_import
 import math
 from numpy import fft
 from gnuradio import fft as gr_fft
@@ -29,10 +30,10 @@ from gnuradio import blocks
 from gnuradio import filter
 
 import digital_swig as digital
-from ofdm_sync_pn import ofdm_sync_pn
-from ofdm_sync_fixed import ofdm_sync_fixed
-from ofdm_sync_pnac import ofdm_sync_pnac
-from ofdm_sync_ml import ofdm_sync_ml
+from .ofdm_sync_pn import ofdm_sync_pn
+from .ofdm_sync_fixed import ofdm_sync_fixed
+from .ofdm_sync_pnac import ofdm_sync_pnac
+from .ofdm_sync_ml import ofdm_sync_ml
 
 try:
     from gnuradio import filter

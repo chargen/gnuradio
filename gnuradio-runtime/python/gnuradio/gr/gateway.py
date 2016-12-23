@@ -1,3 +1,4 @@
+from __future__ import print_function
 #
 # Copyright 2011-2012 Free Software Foundation, Inc.
 #

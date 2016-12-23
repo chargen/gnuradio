@@ -52,7 +52,7 @@ class rpc_manager():
         self.poller_req_in.register(self.req_socket, zmq.POLLIN)
 
     def add_interface(self, id_str, callback_func):
-        if not self.interfaces.has_key(id_str):
+        if id_str not in self.interfaces:
             self.interfaces[id_str] = callback_func
             print("[RPC] added reply interface:", id_str)
         else:
@@ -91,7 +91,7 @@ class rpc_manager():
             return reply
 
     def callback(self, id_str, args):
-        if self.interfaces.has_key(id_str):
+        if id_str in self.interfaces:
             callback_func = self.interfaces.get(id_str)
             if not args == None:
                 # use unpacking or splat operator * to unpack argument list

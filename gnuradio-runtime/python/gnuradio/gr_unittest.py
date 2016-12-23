@@ -22,9 +22,10 @@
 """
 GNU radio specific extension of unittest.
 """
+from __future__ import absolute_import
 
 import unittest
-import gr_xmlrunner
+from . import gr_xmlrunner
 import sys, os, stat
 
 class TestCase(unittest.TestCase):

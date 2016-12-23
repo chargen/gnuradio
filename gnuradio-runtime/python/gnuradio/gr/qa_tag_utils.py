@@ -20,6 +20,7 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
 from gnuradio import gr, gr_unittest
 
 try:
@@ -111,6 +112,6 @@ class test_tag_utils (gr_unittest.TestCase):
 
 
 if __name__ == '__main__':
-    print 'hi'
+    print('hi')
     gr_unittest.run(test_tag_utils, "test_tag_utils.xml")
 

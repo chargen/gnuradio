@@ -21,8 +21,9 @@
 #
 
 from __future__ import print_function
+from __future__ import absolute_import
 
-from Generate_LDPC_matrix_functions import *
+from .Generate_LDPC_matrix_functions import *
 
 # This is an example of how to generate a parity check matrix for
 # use with the LDPC Richardson Urbanke encoder. A significant amount

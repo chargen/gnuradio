@@ -41,7 +41,7 @@ class pubsub(dict):
         self._proxies[key] = None
 
     def __setitem__(self, key, val):
-        if not self.has_key(key):
+        if key not in self:
             self.__missing__(key, val)
         elif self._proxies[key] is not None:
             (p, newkey) = self._proxies[key]
@@ -54,7 +54,7 @@ class pubsub(dict):
             sub(val)
 
     def __getitem__(self, key):
-        if not self.has_key(key): self.__missing__(key)
+        if key not in self: self.__missing__(key)
         if self._proxies[key] is not None:
             (p, newkey) = self._proxies[key]
             return p[newkey]
@@ -64,7 +64,7 @@ class pubsub(dict):
             return dict.__getitem__(self, key)
 
     def publish(self, key, publisher):
-        if not self.has_key(key): self.__missing__(key)
+        if key not in self: self.__missing__(key)
         if self._proxies[key] is not None:
             (p, newkey) = self._proxies[key]
             p.publish(newkey, publisher)
@@ -72,7 +72,7 @@ class pubsub(dict):
             self._publishers[key] = publisher
 
     def subscribe(self, key, subscriber):
-        if not self.has_key(key): self.__missing__(key)
+        if key not in self: self.__missing__(key)
         if self._proxies[key] is not None:
             (p, newkey) = self._proxies[key]
             p.subscribe(newkey, subscriber)
@@ -94,7 +94,7 @@ class pubsub(dict):
             self._subscribers[key].remove(subscriber)
 
     def proxy(self, key, p, newkey=None):
-        if not self.has_key(key): self.__missing__(key)
+        if key not in self: self.__missing__(key)
         if newkey is None: newkey = key
         self._proxies[key] = (p, newkey)
 

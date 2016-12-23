@@ -20,11 +20,12 @@
 """ Returns information about a module """
 
 from __future__ import print_function
+from __future__ import absolute_import
 
 import os
 
-from modtool_base import ModTool, ModToolException
-from util_functions import get_modname
+from .modtool_base import ModTool, ModToolException
+from .util_functions import get_modname
 
 
 class ModToolInfo(ModTool):

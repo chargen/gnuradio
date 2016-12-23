@@ -51,7 +51,7 @@ class seq_with_cursor (object):
         cv = self.current()
         more = True
         while cv < v and more:
-            cv, more = self.next()      # side effect!
+            cv, more = next(self)      # side effect!
 
     def next (self):
         new_index = self.index + 1

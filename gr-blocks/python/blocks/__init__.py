@@ -22,6 +22,7 @@
 '''
 Processing blocks common to many flowgraphs.
 '''
+from __future__ import absolute_import
 import os
 
 try:
@@ -31,7 +32,7 @@ except ImportError:
     __path__.append(os.path.join(dirname, "..", "..", "swig"))
     from blocks_swig import *
 
-from stream_to_vector_decimator import *
+from .stream_to_vector_decimator import *
 
 #alias old add_vXX and multiply_vXX
 add_vcc = add_cc

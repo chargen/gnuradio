@@ -20,11 +20,12 @@
 #
 
 from __future__ import print_function
+from __future__ import absolute_import
 
 import struct
 import numpy
 from gnuradio import gru
-import crc
+from . import crc
 
 def conv_packed_binary_string_to_1_0_string(s):
     """

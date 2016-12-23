@@ -21,14 +21,15 @@
 """ Module to rename blocks """
 
 from __future__ import print_function
+from __future__ import absolute_import
 
 import os
 import re
 
-from util_functions import append_re_line_sequence, ask_yes_no
-from cmakefile_editor import CMakeFileEditor
-from modtool_base import ModTool, ModToolException
-from templates import Templates
+from .util_functions import append_re_line_sequence, ask_yes_no
+from .cmakefile_editor import CMakeFileEditor
+from .modtool_base import ModTool, ModToolException
+from .templates import Templates
 
 class ModToolRename(ModTool):
     """ Rename a block in the out-of-tree module. """

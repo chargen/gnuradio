@@ -4,6 +4,7 @@
 # Generated Thu Jun 11 18:44:25 2009 by generateDS.py.
 #
 
+from __future__ import print_function
 import sys
 import getopt
 
@@ -19,7 +20,7 @@ from xml.dom import Node
 
 try:
     from generatedssuper import GeneratedsSuper
-except ImportError, exp:
+except ImportError as exp:
 
     class GeneratedsSuper:
         def format_string(self, input_data, input_name=''):
@@ -4221,7 +4222,7 @@ class codelineType(GeneratedsSuper):
         if attrs.get('lineno'):
             try:
                 self.lineno = int(attrs.get('lineno').value)
-            except ValueError, exp:
+            except ValueError as exp:
                 raise ValueError('Bad integer attribute (lineno): %s' % exp)
         if attrs.get('refkind'):
             self.refkind = attrs.get('refkind').value
@@ -4504,12 +4505,12 @@ class referenceType(GeneratedsSuper):
         if attrs.get('endline'):
             try:
                 self.endline = int(attrs.get('endline').value)
-            except ValueError, exp:
+            except ValueError as exp:
                 raise ValueError('Bad integer attribute (endline): %s' % exp)
         if attrs.get('startline'):
             try:
                 self.startline = int(attrs.get('startline').value)
-            except ValueError, exp:
+            except ValueError as exp:
                 raise ValueError('Bad integer attribute (startline): %s' % exp)
         if attrs.get('refid'):
             self.refid = attrs.get('refid').value
@@ -4627,17 +4628,17 @@ class locationType(GeneratedsSuper):
         if attrs.get('bodystart'):
             try:
                 self.bodystart = int(attrs.get('bodystart').value)
-            except ValueError, exp:
+            except ValueError as exp:
                 raise ValueError('Bad integer attribute (bodystart): %s' % exp)
         if attrs.get('line'):
             try:
                 self.line = int(attrs.get('line').value)
-            except ValueError, exp:
+            except ValueError as exp:
                 raise ValueError('Bad integer attribute (line): %s' % exp)
         if attrs.get('bodyend'):
             try:
                 self.bodyend = int(attrs.get('bodyend').value)
-            except ValueError, exp:
+            except ValueError as exp:
                 raise ValueError('Bad integer attribute (bodyend): %s' % exp)
         if attrs.get('bodyfile'):
             self.bodyfile = attrs.get('bodyfile').value
@@ -6778,12 +6779,12 @@ class docTableType(GeneratedsSuper):
         if attrs.get('rows'):
             try:
                 self.rows = int(attrs.get('rows').value)
-            except ValueError, exp:
+            except ValueError as exp:
                 raise ValueError('Bad integer attribute (rows): %s' % exp)
         if attrs.get('cols'):
             try:
                 self.cols = int(attrs.get('cols').value)
-            except ValueError, exp:
+            except ValueError as exp:
                 raise ValueError('Bad integer attribute (cols): %s' % exp)
     def buildChildren(self, child_, nodeName_):
         if child_.nodeType == Node.ELEMENT_NODE and \
@@ -7108,7 +7109,7 @@ class docHeadingType(GeneratedsSuper):
         if attrs.get('level'):
             try:
                 self.level = int(attrs.get('level').value)
-            except ValueError, exp:
+            except ValueError as exp:
                 raise ValueError('Bad integer attribute (level): %s' % exp)
     def buildChildren(self, child_, nodeName_):
         if child_.nodeType == Node.TEXT_NODE:
@@ -8283,7 +8284,7 @@ Options:
 """
 
 def usage():
-    print USAGE_TEXT
+    print(USAGE_TEXT)
     sys.exit(1)
 
 

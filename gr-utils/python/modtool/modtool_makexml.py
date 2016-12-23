@@ -21,16 +21,17 @@
 """ Automatically create XML bindings for GRC from block code """
 
 from __future__ import print_function
+from __future__ import absolute_import
 
 import os
 import re
 import glob
 
-from modtool_base import ModTool, ModToolException
-from parser_cc_block import ParserCCBlock
-from grc_xml_generator import GRCXMLGenerator
-from cmakefile_editor import CMakeFileEditor
-from util_functions import ask_yes_no
+from .modtool_base import ModTool, ModToolException
+from .parser_cc_block import ParserCCBlock
+from .grc_xml_generator import GRCXMLGenerator
+from .cmakefile_editor import CMakeFileEditor
+from .util_functions import ask_yes_no
 
 
 class ModToolMakeXML(ModTool):

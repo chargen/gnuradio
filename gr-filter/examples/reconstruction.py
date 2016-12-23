@@ -20,6 +20,7 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
 from gnuradio import gr, digital
 from gnuradio import filter
 from gnuradio import blocks
@@ -28,20 +29,20 @@ import sys
 try:
     from gnuradio import channels
 except ImportError:
-    print "Error: Program requires gr-channels."
+    print("Error: Program requires gr-channels.")
     sys.exit(1)
 
 try:
     import scipy
     from scipy import fftpack
 except ImportError:
-    print "Error: Program requires scipy (see: www.scipy.org)."
+    print("Error: Program requires scipy (see: www.scipy.org).")
     sys.exit(1)
 
 try:
     import pylab
 except ImportError:
-    print "Error: Program requires matplotlib (see: matplotlib.sourceforge.net)."
+    print("Error: Program requires matplotlib (see: matplotlib.sourceforge.net).")
     sys.exit(1)
 
 fftlen = 8192
@@ -62,7 +63,7 @@ def main():
     proto_taps = filter.firdes.low_pass_2(1, nchans*fs,
                                           bw, tb, 80,
                                           filter.firdes.WIN_BLACKMAN_hARRIS)
-    print "Filter length: ", len(proto_taps)
+    print("Filter length: ", len(proto_taps))
 
 
     # Create a modulated signal

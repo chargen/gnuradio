@@ -16,12 +16,14 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 """
+from __future__ import absolute_import
 
 import pygtk
+from functools import reduce
 pygtk.require('2.0')
 import gtk
 
-import Preferences
+from . import Preferences
 
 NO_MODS_MASK = 0
 
@@ -81,7 +83,7 @@ class _ActionBase(object):
         for i in range(len(keypresses)/2):
             keyval, mod_mask = keypresses[i*2:(i+1)*2]
             # register this keypress
-            if _actions_keypress_dict.has_key((keyval, mod_mask)):
+            if (keyval, mod_mask) in _actions_keypress_dict:
                 raise KeyError('keyval/mod_mask pair already registered "%s"' % str((keyval, mod_mask)))
             _actions_keypress_dict[(keyval, mod_mask)] = self
             # set the accelerator group, and accelerator path

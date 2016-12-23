@@ -21,13 +21,14 @@
 """ Create a whole new out-of-tree module """
 
 from __future__ import print_function
+from __future__ import absolute_import
 
 import shutil
 import os
 import re
 from gnuradio import gr
-from modtool_base import ModTool, ModToolException
-from scm import SCMRepoFactory
+from .modtool_base import ModTool, ModToolException
+from .scm import SCMRepoFactory
 
 class ModToolNewModule(ModTool):
     """ Create a new out-of-tree module """

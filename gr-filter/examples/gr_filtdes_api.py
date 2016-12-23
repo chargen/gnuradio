@@ -20,6 +20,7 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
 from gnuradio.filter import filter_design
 import sys
 
@@ -31,7 +32,7 @@ returns b,a for IIR filter design
 filtobj = filter_design.launch(sys.argv)
 
 # Displaying all filter paramters
-print "Filter Count:", filtobj.get_filtercount()
-print "Filter type:", filtobj.get_restype()
-print "Filter params", filtobj.get_params()
-print "Filter Coefficients", filtobj.get_taps()
+print("Filter Count:", filtobj.get_filtercount())
+print("Filter type:", filtobj.get_restype())
+print("Filter params", filtobj.get_params())
+print("Filter Coefficients", filtobj.get_taps())

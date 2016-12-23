@@ -20,13 +20,14 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import absolute_import
 from gnuradio import gr, gr_unittest, blocks
 import fec_swig as fec
 
 import numpy as np
-from extended_decoder import extended_decoder
-from polar.encoder import PolarEncoder
-import polar.channel_construction as cc
+from .extended_decoder import extended_decoder
+from .polar.encoder import PolarEncoder
+from . import polar.channel_construction as cc
 
 # import os
 # print('PID:', os.getpid())

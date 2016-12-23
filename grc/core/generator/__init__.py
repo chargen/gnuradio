@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 # Copyright 2008-2015 Free Software Foundation, Inc.
 # This file is part of GNU Radio
 #
@@ -15,4 +16,4 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 
-from Generator import Generator
+from .Generator import Generator

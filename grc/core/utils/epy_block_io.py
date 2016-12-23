@@ -32,7 +32,7 @@ def _ports(sigs, msgs):
 def _find_block_class(source_code, cls):
     ns = {}
     try:
-        exec source_code in ns
+        exec(source_code, ns)
     except Exception as e:
         raise ValueError("Can't interpret source code: " + str(e))
     for var in ns.itervalues():

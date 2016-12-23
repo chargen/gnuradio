@@ -20,13 +20,14 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import absolute_import
 from gnuradio import gr, gr_unittest, blocks
 import fec_swig as fec
-from _qa_helper import _qa_helper
+from ._qa_helper import _qa_helper
 import numpy as np
 
-from extended_encoder import extended_encoder
-from extended_decoder import extended_decoder
+from .extended_encoder import extended_encoder
+from .extended_decoder import extended_decoder
 
 class test_fecapi_dummy(gr_unittest.TestCase):
 

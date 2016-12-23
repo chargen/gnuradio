@@ -114,11 +114,11 @@ def _prepare_uhd_swig():
                 ):
                     try:
                         if len(args) > index: args[index] = cast(args[index])
-                        if kwargs.has_key(key): kwargs[key] = cast(kwargs[key])
+                        if key in kwargs: kwargs[key] = cast(kwargs[key])
                     except: pass
                 #dont pass kwargs, it confuses swig, map into args list:
                 for key in ('device_addr', 'stream_args', 'io_type', 'num_channels', 'msgq'):
-                    if kwargs.has_key(key): args.append(kwargs[key])
+                    if key in kwargs: args.append(kwargs[key])
                 return old_constructor(*args)
             return constructor_interceptor
         setattr(uhd_swig, attr, constructor_factory(getattr(uhd_swig, attr)))

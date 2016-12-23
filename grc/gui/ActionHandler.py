@@ -16,6 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 """
+from __future__ import print_function
 
 
 import gobject
@@ -601,7 +602,7 @@ class ActionHandler:
                 try:
                     page.get_proc().kill()
                 except:
-                    print "could not kill process: %d" % page.get_proc().pid
+                    print("could not kill process: %d" % page.get_proc().pid)
         elif action == Actions.PAGE_CHANGE:  # pass and run the global actions
             pass
         elif action == Actions.RELOAD_BLOCKS:
@@ -642,7 +643,7 @@ class ActionHandler:
                              shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
         else:
-            print '!!! Action "%s" not handled !!!' % action
+            print('!!! Action "%s" not handled !!!' % action)
         ##################################################
         # Global Actions for all States
         ##################################################

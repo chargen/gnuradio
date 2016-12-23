@@ -26,10 +26,11 @@ from __future__ import print_function
 """
 Generic modulation and demodulation.
 """
+from __future__ import absolute_import
 
 from gnuradio import gr
-from modulation_utils import extract_kwargs_from_options_for_class
-from utils import mod_codes
+from .modulation_utils import extract_kwargs_from_options_for_class
+from .utils import mod_codes
 import digital_swig as digital
 import math
 

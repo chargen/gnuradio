@@ -20,6 +20,7 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
 from gnuradio import gr, gr_unittest, filter, blocks
 import math
 import random
@@ -155,8 +156,8 @@ class test_rational_resampler (gr_unittest.TestCase):
 
         N = 10
         offset = 10#len(taps)-1
-        print expected_result[100+offset:100+offset+N]
-        print result_data[100:100+N]
+        print(expected_result[100+offset:100+offset+N])
+        print(result_data[100:100+N])
         #self.assertEqual(expected_result[offset:offset+N], result_data[0:N])
 
     # FIXME disabled.  Triggers hang on SuSE 10.0

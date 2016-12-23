@@ -19,10 +19,11 @@
 #
 
 from __future__ import print_function
+from __future__ import absolute_import
 
 
 import numpy as np
-from helper_functions import *
+from .helper_functions import *
 
 '''
 PolarCommon holds value checks and common initializer code for both Encoder and Decoder.

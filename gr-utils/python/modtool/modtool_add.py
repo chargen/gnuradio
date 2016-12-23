@@ -21,15 +21,16 @@
 """ Module to add new blocks """
 
 from __future__ import print_function
+from __future__ import absolute_import
 
 import os
 import re
 
-from util_functions import append_re_line_sequence, ask_yes_no
-from cmakefile_editor import CMakeFileEditor
-from modtool_base import ModTool, ModToolException
-from templates import Templates
-from code_generator import render_template
+from .util_functions import append_re_line_sequence, ask_yes_no
+from .cmakefile_editor import CMakeFileEditor
+from .modtool_base import ModTool, ModToolException
+from .templates import Templates
+from .code_generator import render_template
 
 class ModToolAdd(ModTool):
     """ Add block to the out-of-tree module. """

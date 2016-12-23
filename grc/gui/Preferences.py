@@ -16,6 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 """
+from __future__ import print_function
 
 import os
 import sys
@@ -45,12 +46,12 @@ def load(platform):
     for section in ['main', 'files_open', 'files_recent']:
         try:
             _config_parser.add_section(section)
-        except Exception, e:
-             print e
+        except Exception as e:
+             print(e)
     try:
         _config_parser.read(_platform.get_prefs_file())
     except Exception as err:
-        print >> sys.stderr, err
+        print(err, file=sys.stderr)
 
 
 def save():
@@ -59,7 +60,7 @@ def save():
             fp.write(HEADER)
             _config_parser.write(fp)
     except Exception as err:
-        print >> sys.stderr, err
+        print(err, file=sys.stderr)
 
 
 def entry(key, value=None, default=None):

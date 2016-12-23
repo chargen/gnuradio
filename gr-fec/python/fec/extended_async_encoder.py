@@ -21,10 +21,11 @@
 #
 
 from __future__ import print_function
+from __future__ import absolute_import
 
 from gnuradio import gr
 import fec_swig as fec
-from bitflip import read_bitlist
+from .bitflip import read_bitlist
 import weakref
 
 class extended_async_encoder(gr.hier_block2):

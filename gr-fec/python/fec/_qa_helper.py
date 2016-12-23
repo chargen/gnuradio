@@ -21,13 +21,14 @@
 #
 
 from __future__ import print_function
+from __future__ import absolute_import
 
 from gnuradio import blocks
 from gnuradio import gr
 import sys, numpy
 
-from extended_encoder import extended_encoder
-from extended_decoder import extended_decoder
+from .extended_encoder import extended_encoder
+from .extended_decoder import extended_decoder
 
 class map_bb(gr.sync_block):
     def __init__(self, bitmap):

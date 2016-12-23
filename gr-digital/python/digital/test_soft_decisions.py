@@ -21,12 +21,13 @@
 #
 
 from __future__ import print_function
+from __future__ import absolute_import
 
 import numpy, pylab, sys
 from gnuradio import digital
-from soft_dec_lut_gen import *
-from psk_constellations import *
-from qam_constellations import *
+from .soft_dec_lut_gen import *
+from .psk_constellations import *
+from .qam_constellations import *
 
 def test_qpsk(i, sample, prec):
     qpsk_const_list = [psk_4_0, psk_4_1, psk_4_2, psk_4_3,

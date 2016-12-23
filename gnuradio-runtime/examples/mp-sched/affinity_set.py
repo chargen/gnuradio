@@ -4,6 +4,7 @@
 # Title: Affinity Set Test
 ##################################################
 
+from __future__ import print_function
 from gnuradio import eng_notation
 from gnuradio import gr
 from gnuradio import blocks
@@ -67,6 +68,6 @@ if __name__ == '__main__':
             try:
                 n = int(ret)
 	    except ValueError:
-                print "Invalid number"
+                print("Invalid number")
 	    else:
                 tb.filter_filt_0.set_processor_affinity([n,])

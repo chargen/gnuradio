@@ -19,10 +19,11 @@
 #
 
 from __future__ import print_function
+from __future__ import absolute_import
 
 import numpy as np
-from common import PolarCommon
-import helper_functions as hf
+from .common import PolarCommon
+from . import helper_functions as hf
 
 
 class PolarEncoder(PolarCommon):

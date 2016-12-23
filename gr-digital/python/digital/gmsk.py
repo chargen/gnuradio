@@ -23,6 +23,7 @@
 #
 
 from __future__ import print_function
+from __future__ import absolute_import
 
 # See gnuradio-examples/python/digital for examples
 
@@ -33,7 +34,7 @@ import inspect
 import numpy
 
 from gnuradio import gr, blocks, analog, filter
-import modulation_utils
+from . import modulation_utils
 import digital_swig as digital
 
 # default values (used in __init__ and add_options)

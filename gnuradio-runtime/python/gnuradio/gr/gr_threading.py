@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 #
 # Copyright 2005 Free Software Foundation, Inc.
 #
@@ -25,10 +26,10 @@ from sys import version_info as _version_info
 
 if _version_info[0:2] == (2, 3):
     #print "Importing gr_threading_23"
-    from gr_threading_23 import *
+    from .gr_threading_23 import *
 elif _version_info[0:2] == (2, 4):
     #print "Importing gr_threading_24"
-    from gr_threading_24 import *
+    from .gr_threading_24 import *
 else:
     # assume the patch was applied...
     #print "Importing system provided threading"

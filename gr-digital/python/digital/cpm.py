@@ -23,6 +23,7 @@
 #
 
 from __future__ import print_function
+from __future__ import absolute_import
 
 # See gnuradio-examples/python/digital for examples
 
@@ -33,7 +34,7 @@ from math import pi
 import numpy
 
 import digital_swig
-import modulation_utils
+from . import modulation_utils
 
 # default values (used in __init__ and add_options)
 _def_samples_per_symbol = 2

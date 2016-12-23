@@ -51,22 +51,22 @@ def python_to_tag(tag_struct):
     good = False
     tag = gr.tag_t()
     if(type(tag_struct) == dict):
-        if(tag_struct.has_key('offset')):
+        if('offset' in tag_struct):
             if(isinstance(tag_struct['offset'], (int,long))):
                 tag.offset = tag_struct['offset']
                 good = True
 
-        if(tag_struct.has_key('key')):
+        if('key' in tag_struct):
             if(isinstance(tag_struct['key'], pmt.pmt_swig.swig_int_ptr)):
                 tag.key = tag_struct['key']
                 good = True
 
-        if(tag_struct.has_key('value')):
+        if('value' in tag_struct):
             if(isinstance(tag_struct['value'], pmt.pmt_swig.swig_int_ptr)):
                 tag.value = tag_struct['value']
                 good = True
 
-        if(tag_struct.has_key('srcid')):
+        if('srcid' in tag_struct):
             if(isinstance(tag_struct['srcid'], pmt.pmt_swig.swig_int_ptr)):
                 tag.srcid = tag_struct['srcid']
                 good = True

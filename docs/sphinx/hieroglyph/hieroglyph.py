@@ -1,9 +1,10 @@
 from __future__ import print_function
+from __future__ import absolute_import
 
 import re
 
-from errors import HieroglyphError
-from nodes import (Node, Raises, Except, Note, Warning, Returns, Arg,
+from .errors import HieroglyphError
+from .nodes import (Node, Raises, Except, Note, Warning, Returns, Arg,
                    ensure_terminal_blank)
 
 __author__ = 'Robert Smallshire'

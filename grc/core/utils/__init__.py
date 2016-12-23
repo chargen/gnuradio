@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 # Copyright 2008-2015 Free Software Foundation, Inc.
 # This file is part of GNU Radio
 #
@@ -15,8 +16,8 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 
-import expr_utils
-import epy_block_io
-import extract_docs
+from . import expr_utils
+from . import epy_block_io
+from . import extract_docs
 
-from odict import odict
+from .odict import odict

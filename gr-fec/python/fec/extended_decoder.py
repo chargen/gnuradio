@@ -21,19 +21,20 @@
 #
 
 from __future__ import print_function
+from __future__ import absolute_import
 
 from gnuradio import gr, blocks
 import fec_swig as fec
-from bitflip import *
+from .bitflip import *
 import sys
 
-if sys.modules.has_key("gnuradio.digital"):
+if "gnuradio.digital" in sys.modules:
     digital = sys.modules["gnuradio.digital"]
 else:
     from gnuradio import digital
 
-from threaded_decoder import threaded_decoder
-from capillary_threaded_decoder import capillary_threaded_decoder
+from .threaded_decoder import threaded_decoder
+from .capillary_threaded_decoder import capillary_threaded_decoder
 
 class extended_decoder(gr.hier_block2):
 

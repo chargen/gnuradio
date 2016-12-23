@@ -20,6 +20,8 @@
 # Boston, MA 02110-1301, USA.
 # 
 
+from __future__ import print_function
+from __future__ import absolute_import
 import random
 import math
 
@@ -30,7 +32,7 @@ from gnuradio.digital.utils import mod_codes, alignment
 from gnuradio.digital import packet_utils
 from gnuradio.digital.generic_mod_demod import generic_mod, generic_demod
 
-from qa_constellation import tested_constellations, twod_constell
+from .qa_constellation import tested_constellations, twod_constell
 
 # Set a seed so that if errors turn up they are reproducible.
 SEED = 1239

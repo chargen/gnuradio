@@ -20,6 +20,7 @@
 # Boston, MA 02110-1301, USA.
 #
 
+from __future__ import print_function
 from gnuradio import gr
 from gnuradio import blocks
 from gnuradio import filter
@@ -31,13 +32,13 @@ try:
     import scipy
     from scipy import fftpack
 except ImportError:
-    print "Error: Program requires scipy (see: www.scipy.org)."
+    print("Error: Program requires scipy (see: www.scipy.org).")
     sys.exit(1)
 
 try:
     import pylab
 except ImportError:
-    print "Error: Program requires matplotlib (see: matplotlib.sourceforge.net)."
+    print("Error: Program requires matplotlib (see: matplotlib.sourceforge.net).")
     sys.exit(1)
 
 
@@ -103,9 +104,9 @@ class fmtest(gr.top_block):
                                               window=filter.firdes.WIN_BLACKMAN_hARRIS)
         tpc = math.ceil(float(len(self._taps)) /  float(self._M))
 
-        print "Number of taps:     ", len(self._taps)
-        print "Number of channels: ", self._M
-        print "Taps per channel:   ", tpc
+        print("Number of taps:     ", len(self._taps))
+        print("Number of channels: ", self._M)
+        print("Taps per channel:   ", tpc)
 
         self.pfb = filter.pfb.channelizer_ccf(self._M, self._taps)
 

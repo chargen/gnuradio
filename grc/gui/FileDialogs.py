@@ -16,17 +16,18 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 """
+from __future__ import absolute_import
 
 import pygtk
 pygtk.require('2.0')
 import gtk
-from Dialogs import MessageDialogHelper
-from Constants import \
+from .Dialogs import MessageDialogHelper
+from .Constants import \
     DEFAULT_FILE_PATH, IMAGE_FILE_EXTENSION, TEXT_FILE_EXTENSION, \
     NEW_FLOGRAPH_TITLE
-import Preferences
+from . import Preferences
 from os import path
-import Utils
+from . import Utils
 
 ##################################################
 # Constants

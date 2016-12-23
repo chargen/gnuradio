@@ -3,6 +3,7 @@
 """
 Generated Mon Feb  9 19:08:05 2009 by generateDS.py.
 """
+from __future__ import absolute_import
 
 
 from xml.dom import minidom
@@ -11,7 +12,7 @@ from xml.dom import Node
 import sys
 
 from . import compoundsuper as supermod
-from compoundsuper import MixedContainer
+from .compoundsuper import MixedContainer
 
 
 class DoxygenTypeSub(supermod.DoxygenType):

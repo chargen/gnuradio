@@ -20,11 +20,12 @@
 #
 
 from __future__ import print_function
+from __future__ import absolute_import
 
 from math import pi
 from gnuradio import gr
 import gnuradio.gr.gr_threading as _threading
-import packet_utils
+from . import packet_utils
 import digital_swig as digital
 
 try:
